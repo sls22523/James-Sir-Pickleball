@@ -236,7 +236,28 @@
         const csvText = await response.text();
         
         // 解析 CSV 每列
-        const rows = csvText.split("\n").map(row => row.split(","));
+        // 智慧解析 CSV（能完美處理欄位文字內部的逗號與引號）
+        function parseCSV(text) {
+          const lines = text.split(/\r\n|\n/);
+          return lines.map(line => {
+            const result = [];
+            let cell = '';
+            let inQuotes = false;
+            for (let i = 0; i < line.length; i++) {
+              const char = line[i];
+              if (char === '"') {
+                inQuotes = !inQuotes;
+              } else if (char === ',' && !inQuotes) {
+                result.push(cell);
+                cell = '';
+              } else {
+                cell += char;
+              }
+            }
+            result.push(cell);
+            return result;
+          });
+        }
         container.innerHTML = "";
 
         let pendingCount = 0;

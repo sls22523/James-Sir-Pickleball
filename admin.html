@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-HK">
 <head>
-  <!-- Line 1-5: 基礎文件設定 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Coach James | 內部管理與 AI 智能排班系統</title>
   
-  <!-- Line 7-15: 引入 Tailwind CSS、FontAwesome、FullCalendar 與 Supabase -->
+  <!-- 引入 Tailwind CSS、FontAwesome、FullCalendar -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-    // Line 18-29: Tailwind 自訂配色設定
     tailwind.config = {
       theme: {
         extend: {
@@ -28,10 +25,10 @@
     }
   </script>
 
-  <!-- Line 32-51: 管理員密碼驗證防護 -->
+  <!-- 管理員密碼驗證防護 -->
   <script>
     (function() {
-      const ADMIN_PASSWORD = "coachjames888"; // 可自行修改密碼
+      const ADMIN_PASSWORD = "coachjames888";
       let isAuthed = sessionStorage.getItem("admin_authenticated");
 
       if (!isAuthed) {
@@ -49,7 +46,7 @@
 
 <body class="bg-court-dark text-slate-100 font-sans min-h-screen">
 
-  <!-- Line 57-81: 後台頂部導覽列 -->
+  <!-- 頂部導覽列 -->
   <header class="bg-court-navy border-b border-slate-800 px-6 py-4 sticky top-0 z-50 flex justify-between items-center shadow-lg">
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 rounded-xl bg-neon-green/20 border border-neon-green flex items-center justify-center text-neon-green font-black text-lg">
@@ -60,7 +57,7 @@
           <span>Coach James 管理後台</span>
           <span class="text-[10px] px-2 py-0.5 rounded-full bg-neon-green text-black font-extrabold uppercase">Admin Portal</span>
         </h1>
-        <p class="text-xs text-slate-400">AI 輔助排班 ✕ Tally 報名數據整合 ✕ 行事曆自主管理</p>
+        <p class="text-xs text-slate-400">AI 輔助排班 ✕ Tally (Google Sheet) 報名數據整合 ✕ 行事曆自主管理</p>
       </div>
     </div>
 
@@ -74,11 +71,11 @@
     </div>
   </header>
 
-  <!-- Line 84-175: 主體內容區塊 -->
+  <!-- 主體內容區塊 -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="grid lg:grid-cols-12 gap-8 items-start">
 
-      <!-- 左側欄：AI 排班與真實 Tally 報名清單 (佔 5 欄) -->
+      <!-- 左側欄：AI 排班與真實 Google Sheet 報名清單 (佔 5 欄) -->
       <div class="lg:col-span-5 space-y-6">
         
         <!-- AI 智能排班面板 -->
@@ -87,31 +84,30 @@
             <h2 class="text-base font-black text-white flex items-center gap-2">
               <i class="fa-solid fa-robot text-neon-green"></i> AI 智能排班與審核
             </h2>
-            <span class="text-[11px] font-bold text-slate-400" id="pendingCountText">待處理報名: 0 筆</span>
+            <span class="text-[11px] font-bold text-slate-400" id="pendingCountText">待處理報名: 載入中...</span>
           </div>
           
           <p class="text-xs text-slate-400 leading-relaxed">
-            系統會自動同步 Tally.so 的真實報名數據（包含地區、課程及 4 人同行優惠），並由 AI 協助進行配對。
+            系統會自動即時連線 Google Sheet，擷取 Tally.so 最新報名數據（含學員程度、大區與預選課程）。
           </p>
 
-          <button onclick="triggerAIScheduler()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-neon-green to-accent-cyan text-slate-950 font-black text-xs shadow-neon hover:opacity-90 transition-all flex items-center justify-center gap-2">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span>一鍵讓 AI 最佳化分析排班</span>
+          <button onclick="loadSubmissionsFromGoogleSheet()" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-neon-green to-accent-cyan text-slate-950 font-black text-xs shadow-neon hover:opacity-90 transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-rotate-right"></i>
+            <span>重新整理與手動擷取 Google Sheet 數據</span>
           </button>
         </div>
 
-        <!-- Tally 真實報名接收清單（無虛構數據） -->
+        <!-- Tally / Google Sheet 報名接收清單 -->
         <div class="bg-court-navy border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
           <h3 class="text-xs font-extrabold uppercase tracking-widest text-slate-400 flex items-center gap-2">
             <i class="fa-solid fa-inbox text-accent-cyan"></i> 新進報名申請 (Tally.so Submissions)
           </h3>
 
-          <!-- 動態載入容器：若無資料顯示提示，有資料則由 JS 渲染 -->
+          <!-- 動態載入容器 -->
           <div id="realSubmissionsContainer" class="space-y-3">
             <div class="bg-slate-900/60 rounded-2xl p-6 text-center border border-slate-800 text-slate-400 text-xs space-y-2">
-              <i class="fa-solid fa-circle-exclamation text-slate-600 text-2xl"></i>
-              <p>目前尚無新的 Tally 報名資料。</p>
-              <p class="text-[10px] text-slate-500">當學員透過網頁填寫 Tally 表單後，將自動即時同步顯示於此。</p>
+              <i class="fa-solid fa-spinner fa-spin text-neon-green text-xl"></i>
+              <p>正在載入 Google Sheet 報名數據...</p>
             </div>
           </div>
         </div>
@@ -122,52 +118,53 @@
             <h3 class="text-sm font-black text-neon-green flex items-center gap-2">
               <i class="fa-brands fa-whatsapp text-lg"></i> AI 自動生成 WhatsApp 通知
             </h3>
-            <span class="text-[10px] text-slate-400">已準備發送</span>
+            <span class="text-[10px] text-slate-400">草稿已預備</span>
           </div>
 
           <div class="space-y-2">
-            <label class="block text-xs font-bold text-slate-400">通知訊息草稿預覽（可直接修改）：</label>
-            <textarea id="whatsappTextDraft" rows="6" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-neon-green transition-all leading-relaxed"></textarea>
+            <label class="block text-xs font-bold text-slate-400">草稿預覽（可直接編輯）：</label>
+            <textarea id="whatsappTextDraft" rows="7" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-neon-green transition-all leading-relaxed"></textarea>
           </div>
 
           <button id="sendWhatsappBtn" onclick="confirmAndSendWhatsApp()" class="w-full bg-neon-green hover:bg-neon-hover text-slate-950 font-black py-3 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2 text-xs">
             <i class="fa-solid fa-paper-plane"></i>
-            <span>確認成班並開啟 WhatsApp 發送通知</span>
+            <span>確認成班並開啟 WhatsApp 發送訊息</span>
           </button>
         </div>
 
       </div>
 
-      <!-- 右側欄：可自主修改的 FullCalendar.js 行事曆 (佔 7 欄) -->
+      <!-- 右側欄：FullCalendar.js 行事曆 (佔 7 欄) -->
       <div class="lg:col-span-7 bg-court-navy border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
         <div class="flex justify-between items-center border-b border-slate-800 pb-4">
           <div>
             <h2 class="text-lg font-black text-white flex items-center gap-2">
               <i class="fa-solid fa-calendar-days text-accent-cyan"></i> 導師授課總行事曆
             </h2>
-            <p class="text-xs text-slate-400">💡 提示：點擊行事曆空白處可直接**新增課程**；點擊已有課程可進行**修改或刪除**。</p>
+            <p class="text-xs text-slate-400">💡 提示：點擊空白處可**新增課程**；點擊既有課程可**修改或刪除**。</p>
           </div>
           <button onclick="calendar.refetchEvents()" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-800 transition-all">
             <i class="fa-solid fa-rotate-right mr-1"></i>重新整理
           </button>
         </div>
 
-        <!-- Calendar Container -->
         <div id="calendar" class="min-h-[580px] text-xs"></div>
       </div>
 
     </div>
   </main>
 
-  <!-- Line 178-310: JavaScript 互動與資料處理邏輯 -->
+  <!-- JavaScript 邏輯與 Google Sheet CSV 擷取程式碼 -->
   <script>
+    // ⚠️ 請記得在 Google Sheet 點擊「檔案 > 共用 > 發布到網路 > 選擇 CSV 格式」，並將發布後的連結貼於下方：
+    const GOOGLE_SHEET_CSV_URL = "YOUR_PUBLISHED_GOOGLE_SHEET_CSV_URL_HERE";
+
     let calendar;
     let selectedStudentPhone = "";
 
     document.addEventListener('DOMContentLoaded', function() {
+      // 1. 初始化 FullCalendar
       const calendarEl = document.getElementById('calendar');
-      
-      // 初始化 FullCalendar 及其互動修改功能
       calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'timeGridWeek',
         headerToolbar: {
@@ -179,10 +176,8 @@
         slotMaxTime: '23:00:00',
         allDaySlot: false,
         locale: 'zh-tw',
-        editable: true,       // 允許拖曳更改時間
-        selectable: true,     // 允許選取時段
-        
-        // 1. 點擊行事曆空白時段 ➔ 新增課程
+        editable: true,
+        selectable: true,
         select: function(info) {
           const title = prompt("📝 請輸入新課程名稱與地點 (例如: 新手速成班 - 歌和老街):");
           if (title) {
@@ -198,8 +193,6 @@
           }
           calendar.unselect();
         },
-
-        // 2. 點擊已存在的課程 ➔ 修改或刪除
         eventClick: function(info) {
           const action = prompt(`⚙️ 你想對「${info.event.title}」進行什麼操作？\n輸入 [1] 修改名稱\n輸入 [2] 刪除此堂課\n直接按取消則不動作`);
           if (action === "1") {
@@ -215,47 +208,149 @@
             }
           }
         },
-
-        events: [
-          {
-            title: '新手速成班 (歌和老街)',
-            start: '2026-11-10T19:00:00',
-            end: '2026-11-10T21:00:00',
-            backgroundColor: '#CCFF00',
-            borderColor: '#CCFF00',
-            textColor: '#060B19'
-          }
-        ]
+        events: []
       });
       calendar.render();
+
+      // 2. 頁面載入後自動向 Google Sheet 抓取報名資料
+      loadSubmissionsFromGoogleSheet();
     });
 
-    // AI 智能排班觸發
-    function triggerAIScheduler() {
-      alert("🤖 AI 正在同步解析 Tally.so 真實報名數據與教練空檔...");
-      setTimeout(() => {
-        alert("ℹ️ 目前沒有待處理的新報名。當有學員提交表格後，AI 將自動在此列出最佳排班建議。");
-      }, 1000);
+    // 🚀 從 Google Sheet 抓取並解析 CSV 資料
+    async function loadSubmissionsFromGoogleSheet() {
+      const container = document.getElementById("realSubmissionsContainer");
+      
+      if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL.includes("YOUR_PUBLISHED")) {
+        container.innerHTML = `
+          <div class="bg-amber-500/10 border border-amber-500/20 text-amber-300 rounded-2xl p-4 text-xs space-y-1">
+            <p class="font-bold">⚠️ 尚未設定 Google Sheet CSV 連結：</p>
+            <p class="text-[11px] text-amber-200/80">請在 Google Sheet 選擇「檔案 ➔ 共用 ➔ 發布到網路 ➔ 選擇 CSV」，並將網址貼到 admin.html 的 GOOGLE_SHEET_CSV_URL 變數中。</p>
+          </div>
+        `;
+        document.getElementById("pendingCountText").innerText = "待處理報名: 0 筆";
+        return;
+      }
+
+      try {
+        const response = await fetch(GOOGLE_SHEET_CSV_URL);
+        const csvText = await response.text();
+        
+        // 解析 CSV 每列
+        const rows = csvText.split("\n").map(row => row.split(","));
+        container.innerHTML = "";
+
+        let pendingCount = 0;
+
+        // 從第 2 行 (Index 1) 開始讀取數據（跳過表頭）
+        for (let i = 1; i < rows.length; i++) {
+          const cols = rows[i];
+          if (cols.length < 5 || !cols[3]) continue; // 略過空白列
+
+          // 🎯 按測試數據欄位精準擷取：
+          const submitTime  = cols[2] ? cols[2].replace(/"/g, '').trim() : "";
+          const name        = cols[3] ? cols[3].replace(/"/g, '').trim() : "未提供姓名";
+          const age         = cols[4] ? cols[4].replace(/"/g, '').trim() : "";
+          const contactName = cols[5] ? cols[5].replace(/"/g, '').trim() : "";
+          
+          // 自動清理電話中的 852 國碼
+          let rawPhone     = cols[6] ? cols[6].replace(/"/g, '').trim() : "";
+          const cleanPhone = rawPhone.replace(/^852/, '').trim(); 
+
+          const language   = cols[7] ? cols[7].replace(/"/g, '').trim() : "";
+          
+          // Hidden Fields (Index 9, 10)
+          const hiddenCourse = cols[9] ? cols[9].replace(/"/g, '').trim() : "";
+          const hiddenVenue  = cols[10] ? cols[10].replace(/"/g, '').trim() : "";
+          
+          // 表單問題 (Index 11, 12, 13)
+          const experience   = cols[11] ? cols[11].replace(/"/g, '').trim() : "未填寫";
+          const formRegion   = cols[12] ? cols[12].replace(/"/g, '').trim() : "";
+          const timeslot     = cols[13] ? cols[13].replace(/"/g, '').trim() : "";
+
+          // 智慧判斷優先採用 Hidden Field
+          const finalRegion  = hiddenVenue || formRegion || "未指定地區";
+          const finalCourse  = hiddenCourse || "一般課程報名";
+
+          pendingCount++;
+
+          // 生成卡片 HTML
+          const cardHTML = `
+            <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 space-y-3 shadow-md hover:border-slate-700 transition-all">
+              
+              <!-- 頂部：姓名、年齡、電話 -->
+              <div class="flex justify-between items-start">
+                <div>
+                  <span class="font-black text-sm text-white">${name}</span>
+                  ${age ? `<span class="text-xs text-slate-400 ml-1.5">(${age}歲)</span>` : ''}
+                  <span class="text-xs text-neon-green ml-2 font-bold"><i class="fa-brands fa-whatsapp"></i> ${cleanPhone}</span>
+                </div>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-neon-green/10 text-neon-green border border-neon-green/30">${finalCourse}</span>
+              </div>
+
+              <!-- 細節：地點與時段 -->
+              <div class="grid grid-cols-2 gap-2 text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/80">
+                <div><i class="fa-solid fa-location-dot text-rose-400 mr-1.5"></i><strong>地區：</strong>${finalRegion}</div>
+                <div><i class="fa-solid fa-clock text-accent-cyan mr-1.5"></i><strong>時段：</strong>${timeslot}</div>
+                <div class="col-span-2 text-slate-400"><i class="fa-solid fa-user-tag mr-1.5"></i><strong>聯絡人：</strong>${contactName || name}</div>
+              </div>
+
+              <!-- 學員對匹克球的認識程度 (F 欄) -->
+              ${experience !== '未填寫' ? `
+                <div class="text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/20 px-3 py-2 rounded-xl flex items-start gap-2">
+                  <i class="fa-solid fa-lightbulb text-amber-400 mt-0.5"></i>
+                  <div>
+                    <span class="font-bold">學員程度/需求：</span>
+                    <p class="text-[11px] text-amber-200/80 leading-relaxed">${experience}</p>
+                  </div>
+                </div>
+              ` : ''}
+
+              <!-- 按鈕：選取並生成 WhatsApp 訊息 -->
+              <div class="pt-1">
+                <button onclick="selectSubmissionForApproval('${name}', '${finalCourse}', '${finalRegion}', '${cleanPhone}', '${experience}')" 
+                        class="w-full bg-slate-800 hover:bg-slate-700 text-neon-green text-xs font-bold py-2 rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                  <span>選擇此報名並由 AI 草擬 WhatsApp</span>
+                </button>
+              </div>
+            </div>
+          `;
+
+          container.innerHTML += cardHTML;
+        }
+
+        document.getElementById("pendingCountText").innerText = `待處理報名: ${pendingCount} 筆`;
+
+      } catch (error) {
+        console.error("無法讀取 Google Sheet 數據：", error);
+        container.innerHTML = `
+          <div class="text-center py-6 text-xs text-rose-400 space-y-1">
+            <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+            <p>連線 Google Sheet 失敗，請確認連結權限是否已公開發布。</p>
+          </div>
+        `;
+      }
     }
 
-    // 點擊真實申請後生成 WhatsApp 草稿
-    function selectSubmissionForApproval(name, course, venue, startTimeStr, phone) {
+    // 點擊卡片觸發：預填 AI WhatsApp 訊息
+    function selectSubmissionForApproval(name, course, venue, phone, experience) {
       selectedStudentPhone = phone;
       const box = document.getElementById('whatsappBox');
       const textArea = document.getElementById('whatsappTextDraft');
       
-      const dateObj = new Date(startTimeStr);
-      const formattedDate = `${dateObj.getFullYear()}年${dateObj.getMonth()+1}月${dateObj.getDate()}日`;
-      const formattedTime = `${dateObj.getHours()}:00 - ${dateObj.getHours()+2}:00`;
+      let expNote = "";
+      if (experience && experience !== "未填寫") {
+        expNote = `\n💡 知道你目前【${experience}】，課堂上教練會特別留意並為你針對性指導！\n`;
+      }
 
-      const draftMessage = `你好 ${name}！多謝你報名 Coach James 的【${course}】🏓 你的課堂已經成功安排好啦！\n\n📍 上課地點：${venue}\n📅 上課時間：${formattedDate} (${formattedTime})\n⏱️ 課堂時數：2 小時\n\n如有任何疑問歡迎隨時回覆！請準時出席，期待與你場上見💪`;
+      const draftMessage = `你好 ${name}！多謝你報名 Coach James 的【${course}】🏓 你的報名我們已經收到囉！\n${expNote}\n📍 偏好地區：${venue}\n我們即將為你安排具體球場與時間，請問本週你有心儀的特定球場嗎？\n\n期待場上見！💪`;
 
       textArea.value = draftMessage;
       box.classList.remove('hidden');
       box.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // 確認成班並開啟 WhatsApp 傳送
+    // 確認開啟 WhatsApp 發送
     function confirmAndSendWhatsApp() {
       const msg = document.getElementById('whatsappTextDraft').value;
       if (!selectedStudentPhone) {
@@ -268,7 +363,7 @@
       window.open(whatsappUrl, '_blank');
     }
 
-    // 安全登出功能
+    // 安全登出
     function logoutAdmin() {
       sessionStorage.removeItem("admin_authenticated");
       alert("已安全登出！");

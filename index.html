@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="zh-HK" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>James Sir | 香港專業匹克球教練 · 技術✕體能精準修正班</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'court-dark': '#060B17',
+            'court-navy': '#0B132B',
+            'court-blue': '#1C2541',
+            'neon-green': '#CCFF00',
+            'neon-hover': '#b3e600',
+            'accent-cyan': '#00F0FF',
+            'card-bg': '#131D35',
+            'card-border': '#223254',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Noto Sans TC"', 'sans-serif'],
+          },
+          boxShadow: {
+            'neon': '0 0 20px rgba(204, 255, 0, 0.35)',
+            'neon-lg': '0 0 35px rgba(204, 255, 0, 0.5)',
+            'cyan-glow': '0 0 20px rgba(0, 240, 255, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS Animations and Visual Depth Rules -->
+  <style>
+    body {
+      background-color: #060B17;
+      color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #060B17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1C2541;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #CCFF00;
+    }
+
+    /* Glassmorphism */
+    .glass-nav {
+      background: rgba(11, 19, 43, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    
+    .glass-card {
+      background: rgba(19, 29, 53, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Radial gradient backgrounds */
+    .bg-radial-glow {
+      background: radial-gradient(circle at 50% 20%, rgba(204, 255, 0, 0.12) 0%, rgba(0, 240, 255, 0.05) 35%, transparent 70%);
+    }
+
+    /* Dynamic Pickleball Pattern */
+    .pickleball-grid {
+      background-image: radial-gradient(rgba(204, 255, 0, 0.08) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    .border-gradient {
+      border-image: linear-gradient(to right, #CCFF00, #00F0FF) 1;
+    }
+  </style>
+</head>
+
+<body class="pickleball-grid text-slate-100 antialiased selection:bg-neon-green selection:text-black">
+
+  <!-- ========================================== -->
+  <!-- 1. NAVIGATION BAR -->
+  <!-- ========================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-800 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-neon-green to-emerald-400 flex items-center justify-center text-black font-extrabold text-xl shadow-neon transform group-hover:rotate-6 transition-all duration-300">
+          <i class="fa-solid fa-table-tennis-paddle-ball text-slate-900"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xl font-black tracking-wider text-white">JAMES</span>
+            <span class="text-xs font-bold px-1.5 py-0.5 rounded bg-neon-green text-black uppercase">HK</span>
+          </div>
+          <p class="text-[11px] text-slate-400 font-medium tracking-wide">James Sir ✕ 亞匹聯 / AASFP 高級教練</p>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+        <a href="#about" class="hover:text-neon-green transition-colors">關於教練</a>
+        <a href="#pillars" class="hover:text-neon-green transition-colors">4大修正核心</a>
+        <a href="#assessment" class="hover:text-neon-green transition-colors">DUPR等級自測</a>
+        <a href="#calculator" class="hover:text-neon-green transition-colors">課程與學費計算</a>
+        <a href="#venues" class="hover:text-neon-green transition-colors">香港場地指南</a>
+        <a href="#testimonials" class="hover:text-neon-green transition-colors">學員實戰評價</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden lg:flex items-center gap-3">
+        <!-- White Course Enrollment Button -->
+        <a href="https://tally.so/r/D4l0QX" 
+          target="_blank"
+          class="bg-white hover:bg-slate-100 text-slate-900 font-bold px-5 py-2.5 rounded-full shadow-md transition-all transform hover:-translate-y-0.5 flex items-center gap-2 text-sm">
+          <i class="fa-solid fa-file-pen text-slate-700"></i>
+          <span>課程報名</span>
+        </a>
+
+        <!-- WhatsApp Enquiry Button -->
+        <a href="https://wa.me/85295384552?text=%E4%BD%A0%E5%A5%BD%20Coach%20James%EF%BC%8C%E6%88%91%E6%83%B3%E8%A9%A2%E5%90%8B%E5%8C%B9%E5%85%8B%E7%90%83%E8%AA%B2%E7%A8%8B%EF%BC%81" 
+          target="_blank" 
+          class="bg-neon-green hover:bg-neon-hover text-slate-950 font-bold px-5 py-2.5 rounded-full shadow-neon transition-all transform hover:-translate-y-0.5 flex items-center gap-2 text-sm">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>WhatsApp 查詢</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-neon-green text-2xl focus:outline-none">
+        <i class="fa-solid fa-bars" id="menuIcon"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-court-navy/95 border-b border-slate-800 px-6 py-5 flex-col gap-4 text-base font-medium">
+      <a href="#about" class="mobile-link py-2 border-b border-slate-800/50 hover:text-neon-green">關於教練</a>
+      <a href="#pillars" class="mobile-link py-2 border-b border-slate-800/50 hover:text-neon-green">4大修正核心</a>
+      <a href="#assessment" class="mobile-link py-2 border-b border-slate-800/50 hover:text-neon-green">DUPR等級自測</a>
+      <a href="#calculator" class="mobile-link py-2 border-b border-slate-800/50 hover:text-neon-green">課程與學費計算</a>
+      <a href="#venues" class="mobile-link py-2 border-b border-slate-800/50 hover:text-neon-green">香港場地指南</a>
+      <a href="#testimonials" class="mobile-link py-2 hover:text-neon-green">學員實戰評價</a>
+      <div class="pt-2">
+        <a href="https://wa.me/85295384552?text=%E4%BD%A0%E5%A5%BD%20Coach%20James%EF%BC%8C%E6%88%91%E6%83%B3%E8%A9%A2%E5%90%8B%E5%8C%B9%E5%85%8B%E7%90%83%E8%AA%B2%E7%A8%8B%EF%BC%81" 
+           target="_blank" 
+           class="w-full bg-neon-green text-slate-950 font-bold py-3 rounded-xl shadow-neon flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>WhatsApp 立即預約</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="pt-20"></div>
+
+  <!-- ========================================== -->
+  <!-- 2. HERO SECTION -->
+  <!-- ========================================== -->
+  <section class="relative min-h-[90vh] flex items-center pt-12 pb-20 bg-radial-glow overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-1/4 -left-20 w-96 h-96 bg-neon-green/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-0 w-96 h-96 bg-accent-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Hero Text Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <!-- Badge Header -->
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700 text-neon-green text-xs sm:text-sm font-semibold tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span>
+            <i class="fa-solid fa-fire text-amber-400"></i>
+            <span>香港首發 · 技術 ✕ 體能精準修正班</span>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none">
+            <span class="block text-white">James Sir</span>
+            <span class="bg-gradient-to-r from-neon-green via-emerald-300 to-accent-cyan bg-clip-text text-transparent">
+              專治打波周身痛
+            </span>
+            <span class="block text-slate-200 text-3xl sm:text-4xl lg:text-5xl mt-2 font-bold">
+              ✕ 敏捷變向 ✕ DUPR晉升
+            </span>
+          </h1>
+
+          <!-- Qualifications Subtitle -->
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
+            <span class="text-neon-green font-bold">亞匹聯一級 (Asia Pickleball Fed L1)</span> ✕ 
+            <span class="text-accent-cyan font-bold">AASFP 高級匹克球體適能教練</span>
+            <br class="hidden sm:inline" />
+            融合打波發力生物力學與動力鏈修正，協助你無痛爆發、告別網球肘/膝痛，速成網前 Dink 攻防策略！
+          </p>
+
+          <!-- Quick Value Bullets -->
+          <div class="grid sm:grid-cols-2 gap-3 max-w-xl mx-auto lg:mx-0 text-xs sm:text-sm font-medium text-slate-300 text-left pt-2">
+            <div class="flex items-center gap-2.5 bg-card-bg/60 p-2.5 rounded-lg border border-slate-800">
+              <i class="fa-solid fa-circle-check text-neon-green"></i>
+              <span>發力機制修正（不傷關節爆發發力）</span>
+            </div>
+            <div class="flex items-center gap-2.5 bg-card-bg/60 p-2.5 rounded-lg border border-slate-800">
+              <i class="fa-solid fa-circle-check text-neon-green"></i>
+              <span>專項敏捷步法與急停變向特訓</span>
+            </div>
+            <div class="flex items-center gap-2.5 bg-card-bg/60 p-2.5 rounded-lg border border-slate-800">
+              <i class="fa-solid fa-circle-check text-neon-green"></i>
+              <span>第三板 Drop / Drive 攻防組合</span>
+            </div>
+            <div class="flex items-center gap-2.5 bg-card-bg/60 p-2.5 rounded-lg border border-slate-800">
+              <i class="fa-solid fa-circle-check text-neon-green"></i>
+              <span>DUPR 評級升階實戰隊戰引導</span>
+            </div>
+          </div>
+
+          <!-- Call To Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#calculator" 
+               class="w-full sm:w-auto bg-neon-green hover:bg-neon-hover text-slate-950 font-extrabold px-8 py-4 rounded-full text-base shadow-neon hover:shadow-neon-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+              <i class="fa-solid fa-bolt text-lg"></i>
+              <span>立即預約試堂 (計算學費)</span>
+            </a>
+            
+            <a href="https://wa.me/85295384552?text=%E4%BD%A0%E5%A5%BD%20Coach%20James%EF%BC%8C%E6%88%91%E6%83%B3%E7%A7%81%E8%A8%8A%E3%80%8CPB%E3%80%8D%E9%A0%98%E5%8F%96%E3%80%8A%E9%A0%90%E9%98%B2%E6%90%8D%E2%BD%A4%E8%88%87%E9%AB%98%E6%95%88%E7%99%BC%E2%BD%8A%E6%8C%87%E5%8D%97%E3%80%8B%EF%BC%81" 
+               target="_blank"
+               class="w-full sm:w-auto border-2 border-slate-700 hover:border-neon-green bg-slate-900/80 text-slate-200 hover:text-neon-green font-bold px-6 py-4 rounded-full text-base transition-all flex items-center justify-center gap-3">
+              <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+              <span>私訊「PB」領取免費指南</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges Counter -->
+          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0">
+            <div>
+              <p class="text-2xl sm:text-3xl font-black text-neon-green">500+</p>
+              <p class="text-xs text-slate-400 font-medium">累積授課時數</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-black text-amber-400">98%</p>
+              <p class="text-xs text-slate-400 font-medium">學員關節舒緩率</p>
+            </div>
+            <div>
+              <p class="text-2xl sm:text-3xl font-black text-accent-cyan">+0.6</p>
+              <p class="text-xs text-slate-400 font-medium">平均 DUPR 提升</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Card Graphic Showcase -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md">
+            
+            <!-- Main Hero Dynamic Card -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-700/80 relative overflow-hidden group">
+              
+              <!-- Subtle Background Light -->
+              <div class="absolute -top-12 -right-12 w-40 h-40 bg-neon-green/20 rounded-full blur-2xl"></div>
+
+              <!-- Coach Badge Top -->
+              <div class="flex items-center justify-between mb-6">
+                <span class="px-3 py-1 rounded-full bg-neon-green/10 text-neon-green border border-neon-green/30 text-xs font-bold">
+                  <i class="fa-solid fa-award mr-1"></i> APF Level 1 Certified
+                </span>
+                <span class="text-xs text-slate-400 font-semibold flex items-center gap-1">
+                  <i class="fa-solid fa-location-dot text-rose-400"></i> 香港全區教學
+                </span>
+              </div>
+
+              <!-- Coach Visual Graphic Avatar -->
+              <div class="relative h-64 sm:h-72 rounded-2xl bg-gradient-to-b from-slate-800 to-court-navy border border-slate-700/60 overflow-hidden flex items-center justify-center mb-6 shadow-inner">
+                
+                <!-- Court lines illustration -->
+                <div class="absolute inset-0 opacity-20 border-2 border-white/20 m-4 rounded flex flex-col justify-between p-2">
+                  <div class="border-b border-white/30 h-1/3"></div>
+                  <div class="border-t border-b border-white/30 h-1/3 bg-neon-green/10"></div>
+                </div>
+
+                <!-- Stylized Pickleball Player Visual Graphic -->
+                <div class="relative z-10 text-center space-y-3 p-4">
+                  <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-neon-green to-emerald-400 p-1 shadow-neon">
+                    <!-- Replaced icon with your avatar image -->
+                    <img 
+                      src="C:\Users\jefft\OneDrive\圖片\photoe.jpg"
+                      alt="James Sir" 
+                      class="w-full h-full rounded-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 class="text-2xl font-black text-white">James Sir</h3>
+                    <p class="text-xs text-neon-green font-bold tracking-wider uppercase mt-0.5">Pickleball Specialist & Biomechanics Coach</p>
+                  </div>
+                </div>
+
+                <!-- DUPR Floating Badge -->
+                <div class="absolute bottom-3 right-3 bg-slate-950/90 border border-slate-700 px-3 py-1.5 rounded-xl text-right">
+                  <p class="text-[10px] text-slate-400 uppercase font-semibold">DUPR Rating</p>
+                  <p class="text-lg font-black text-amber-400">4.5+</p>
+                </div>
+              </div>
+
+              <!-- Key Credentials Tags -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2 text-xs font-medium text-slate-300">
+                  <i class="fa-solid fa-certificate text-neon-green"></i>
+                  <span>亞洲匹克球聯合會 (APF) 認證教練</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-medium text-slate-300">
+                  <i class="fa-solid fa-heart-pulse text-rose-400"></i>
+                  <span>AASFP 高級體適能指導員 (運動防傷專精)</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-medium text-slate-300">
+                  <i class="fa-solid fa-language text-accent-cyan"></i>
+                  <span>廣東話 / English / 普通話 授課</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 3. ABOUT & 4 CORE PILLARS SECTION -->
+  <!-- ========================================== -->
+  <section id="pillars" class="py-20 bg-court-navy relative border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-neon-green">Why Train With James Sir</span>
+        <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+          打破傳統盲練 · <span class="text-neon-green">4 大技術 ✕ 體能修正核心</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          匹克球不僅是控球遊戲，正確的「動力鏈發力」與「急停敏捷步法」能讓你在避免關節磨損的同時，打出更具侵略性的重炮擊球。
+        </p>
+      </div>
+
+      <!-- 4 Pillars Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Pillar 1 -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-neon-green/60 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-neon-green/10 text-neon-green border border-neon-green/30 flex items-center justify-center text-2xl font-black mb-5 group-hover:bg-neon-green group-hover:text-black transition-colors">
+            <i class="fa-solid fa-bone"></i>
+          </div>
+          <span class="text-xs font-extrabold text-neon-green uppercase tracking-wider">PILLAR 01</span>
+          <h3 class="text-xl font-extrabold text-white mt-1 mb-3">生物力學 ✕ 生態防傷</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            針對香港打球者常見的「網球肘、腰椎跟腱拉傷與膝關節痛」，解析人體動力鏈 (Kinetic Chain)，用髖關節旋轉發力替代手臂死咬。
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-neon-green"></i> 告別手臂發麻與膝頭痛</li>
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-neon-green"></i> 解鎖 Core 核心旋轉爆發</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-accent-cyan/60 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/30 flex items-center justify-center text-2xl font-black mb-5 group-hover:bg-accent-cyan group-hover:text-black transition-colors">
+            <i class="fa-solid fa-bolt-lightning"></i>
+          </div>
+          <span class="text-xs font-extrabold text-accent-cyan uppercase tracking-wider">PILLAR 02</span>
+          <h3 class="text-xl font-extrabold text-white mt-1 mb-3">專項敏捷 ✕ 步法變向</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            匹克球 70%勝負取決於廚房線 (Kitchen) 步法。專項腳步急停、側向微調與踏步涵蓋，讓你永遠比對手早半秒到位準備擊球。
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-accent-cyan"></i> 廚房線左右靈敏交叉步</li>
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-accent-cyan"></i> 後退高遠球保護與煞車</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-amber-400/60 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-amber-400/10 text-amber-400 border border-amber-400/30 flex items-center justify-center text-2xl font-black mb-5 group-hover:bg-amber-400 group-hover:text-black transition-colors">
+            <i class="fa-solid fa-chess"></i>
+          </div>
+          <span class="text-xs font-extrabold text-amber-400 uppercase tracking-wider">PILLAR 03</span>
+          <h3 class="text-xl font-extrabold text-white mt-1 mb-3">網前 Dink ✕ 第三板攻防</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            精準系統教學：從 3rd Shot Drop (軟吊落地) 到 Drive (爆衝壓制)，配合 Speedup 與 Reset 防守控制，不再盲目起高球被爆扣。
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-400"></i> 第三板急墜過網技術</li>
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-400"></i> 網前死角 Dink 變線落點</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 hover:border-purple-400/60 transition-all duration-300 group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-purple-400/10 text-purple-400 border border-purple-400/30 flex items-center justify-center text-2xl font-black mb-5 group-hover:bg-purple-400 group-hover:text-black transition-colors">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <span class="text-xs font-extrabold text-purple-400 uppercase tracking-wider">PILLAR 04</span>
+          <h3 class="text-xl font-extrabold text-white mt-1 mb-3">DUPR 評級 ✕ 賽事實戰</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-4">
+            專為想參加本地或海外 DUPR 比賽學員設計。模擬真實比賽高壓節奏、雙人站位默契分配與心態穩定調控，快速提高勝率。
+          </p>
+          <ul class="text-xs text-slate-300 space-y-1.5 pt-2 border-t border-slate-800">
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-purple-400"></i> DUPR 戰術對位模擬</li>
+            <li class="flex items-center gap-1.5"><i class="fa-solid fa-check text-purple-400"></i> 雙人溝通與補位系統</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. INTERACTIVE DUPR SELF-ASSESSMENT TOOL -->
+  <!-- ========================================== -->
+  <section id="assessment" class="py-20 bg-court-dark relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center space-y-3 mb-12">
+        <span class="px-3 py-1 rounded-full bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/30 text-xs font-extrabold uppercase">
+          Interactive Tool
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          🏓 DUPR 匹克球等級 <span class="text-neon-green">4步快速自測</span>
+        </h2>
+        <p class="text-slate-400 text-sm">唔知自己目前處於邊個級別？回答 4 個簡單問題，即刻獲取 James Sir 嘅專屬教練建議同課程。</p>
+      </div>
+
+      <!-- Assessment Card Box -->
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-700 shadow-2xl relative overflow-hidden">
+        
+        <!-- Progress Bar -->
+        <div class="mb-8">
+          <div class="flex justify-between text-xs font-bold text-slate-400 mb-2">
+            <span id="quizStepText">進度：第 1 / 4 題</span>
+            <span id="quizPercentText" class="text-neon-green">25%</span>
+          </div>
+          <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+            <div id="quizProgressBar" class="h-full bg-gradient-to-r from-neon-green to-accent-cyan transition-all duration-300 w-1/4"></div>
+          </div>
+        </div>
+
+        <!-- Dynamic Questions Container -->
+        <div id="quizContainer" class="space-y-6">
+          <!-- Step 1 Container injected by JS -->
+        </div>
+
+        <!-- Quiz Dynamic Result Box (Hidden by default) -->
+        <div id="quizResultBox" class="hidden space-y-6 text-center py-4">
+          <div class="w-20 h-20 mx-auto rounded-full bg-neon-green/20 border-2 border-neon-green flex items-center justify-center text-neon-green text-3xl shadow-neon">
+            <i class="fa-solid fa-award"></i>
+          </div>
+
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">評估結果評級 (Estimated DUPR)</span>
+            <h3 id="resultDuprScore" class="text-4xl sm:text-5xl font-black text-neon-green mt-1">DUPR 2.5 - 3.0</h3>
+            <p id="resultLevelTitle" class="text-lg font-bold text-white mt-1">進階基礎 · 著重穩定控球與第三板練習</p>
+          </div>
+
+          <div class="bg-slate-900/90 rounded-2xl p-5 border border-slate-800 text-left space-y-3">
+            <h4 class="text-sm font-bold text-neon-green flex items-center gap-2">
+              <i class="fa-solid fa-lightbulb"></i> James Sir 診斷與訓練建議：
+            </h4>
+            <p id="resultDiagnosisText" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              您已有基礎來回球能力，但在廚房線 Dink 及第三板 Drop 的穩定度上仍有提升空間。建議重點修正動力鏈發力，減少出界失誤。
+            </p>
+          </div>
+
+          <!-- Quiz Dynamic Result Buttons -->
+          <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+            <!-- Reset Button -->
+            <button id="resetQuizBtn" type="button" class="px-5 py-3 rounded-full border border-slate-700 text-slate-300 font-bold text-sm hover:bg-slate-800 transition-all">
+              <i class="fa-solid fa-rotate-left mr-1.5"></i>重新測試
+            </button>
+  
+            <!-- NEW: Save Quiz Result & Pre-fill Tally Form -->
+            <a id="quizTallyLink" 
+               href="#" 
+               target="_blank"
+               class="px-6 py-3 rounded-full bg-white hover:bg-slate-100 text-slate-950 font-black text-sm shadow-md flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5">
+              <i class="fa-solid fa-file-pen text-slate-700"></i>
+              <span>帶此測試結果填表報名 (Tally)</span>
+            </a>
+
+            <!-- Existing WhatsApp Link -->
+            <a id="quizBookingLink" 
+               href="#" 
+               target="_blank"
+               class="px-6 py-3 rounded-full bg-neon-green text-slate-950 font-black text-sm shadow-neon hover:bg-neon-hover flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>WhatsApp 諮詢教練</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 5. COURSE INTRODUCTION SECTION -->
+  <!-- ========================================== -->
+  <section id="calculator" class="py-20 bg-court-navy relative border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-neon-green">Professional Course Offerings</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          專業匹克球 <span class="text-neon-green">課程介紹與班別</span>
+        </h2>
+        <p class="text-slate-400 text-sm">
+          針對不同階段學員設計，融合生物力學發力與實戰戰術，助你無痛爆發、速成升階！
+        </p>
+
+        <!-- Important Notes Box -->
+        <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-4 sm:p-5 text-left max-w-2xl mx-auto mt-6 space-y-2 text-xs sm:text-sm text-slate-300">
+          <p class="font-bold text-neon-green flex items-center gap-2">
+            <i class="fa-solid fa-circle-info"></i> 報名須知與優惠：
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="text-neon-green font-bold">1.</span> 
+            <span>以上所有課程每堂時數均為 2 小時。</span>
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="text-neon-green font-bold">2.</span> 
+            <span>4人或以上同行報名即可享有 12% 折讓優惠！（注意：為享用此優惠，請務必於報名表的「Participant Name:」欄位填寫所有同行參加者的姓名）。</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Courses Grid (5 Courses) -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Course 1: 新手速成班 -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-700 hover:border-neon-green transition-all flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="h-40 rounded-2xl bg-slate-800 border border-slate-700/60 overflow-hidden flex items-center justify-center relative">
+              <!-- TODO: 之後可將此處換成 <img src="images/beginner.jpg" class="w-full h-full object-cover"> -->
+              <i class="fa-solid fa-graduation-cap text-4xl text-neon-green/40"></i>
+              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] text-neon-green font-bold">2 小時</span>
+            </div>
+            
+            <div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-neon-green/10 text-neon-green border border-neon-green/30">Beginner</span>
+              <h3 class="text-xl font-black text-white mt-2">新手速成班</h3>
+              <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                專為初學者而設。從基本握拍、正反手擊球、發球規則到基礎 Dink 網前對拉，帶你快速上手零負擔。
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-2.5 pt-6 mt-6 border-t border-slate-800">
+            <a href="https://wa.me/85295384552?text=%E4%BD%A0%E5%A5%BD%20James%20Sir%EF%BC%8C%E6%88%91%E6%83%B3%E6%9F%A5%E8%A9%A2%E3%80%8C%E6%96%B0%E6%89%8B%E9%80%9F%E6%88%90%E7%8F%AD%E3%80%8D%E7%9A%84%E8%A9%B3%E7%B4%B0%E5%85%A7%E5%AE%B9%E3%80%82" 
+               target="_blank" 
+               class="w-full bg-neon-green hover:bg-neon-hover text-slate-950 font-black py-3 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-brands fa-whatsapp text-base"></i>
+              <span>WhatsApp 預約諮詢</span>
+            </a>
+            <a href="https://tally.so/r/D4l0QX?course_type=%E6%96%B0%E6%89%8B%E9%80%9F%E6%88%90%E7%8F%AD" 
+               target="_blank" 
+               class="w-full bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold py-3 rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-solid fa-file-pen text-neon-green"></i>
+              <span>報名 Enroll Now</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Course 2: 急救速成班 -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-700 hover:border-accent-cyan transition-all flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="h-40 rounded-2xl bg-slate-800 border border-slate-700/60 overflow-hidden flex items-center justify-center relative">
+              <i class="fa-solid fa-kit-medical text-4xl text-accent-cyan/40"></i>
+              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] text-accent-cyan font-bold">2 小時</span>
+            </div>
+            
+            <div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/30">First-Aid & Fix</span>
+              <h3 class="text-xl font-black text-white mt-2">急救速成班</h3>
+              <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                專治打波周身痛（如網球肘、膝蓋痛）。修正錯誤發力姿勢，透過生物力學幫你即時止痛、無痛發力。
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-2.5 pt-6 mt-6 border-t border-slate-800">
+            <a href="https://wa.me/85295384552?text=%E4%BD%A0%E5%A5%BD%20James%20Sir%EF%BC%8C%E6%88%91%E6%83%B3%E6%9F%A5%E8%A9%A2%E3%80%8C%E6%80%A5%E6%95%91%E9%80%9F%E6%88%90%E7%8F%AD%E3%80%8D%E7%9A%84%E8%A9%B3%E7%B4%B0%E5%85%A7%E5%AE%B9%E3%80%82" 
+               target="_blank" 
+               class="w-full bg-neon-green hover:bg-neon-hover text-slate-950 font-black py-3 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-brands fa-whatsapp text-base"></i>
+              <span>WhatsApp 預約諮詢</span>
+            </a>
+            <a href="https://tally.so/r/D4l0QX?course_type=%E6%80%A5%E6%95%91%E9%80%9F%E6%88%90%E7%8F%AD" 
+               target="_blank" 
+               class="w-full bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold py-3 rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-solid fa-file-pen text-neon-green"></i>
+              <span>報名 Enroll Now</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Course 3: 技術與體能精準修正班 -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-700 hover:border-amber-400 transition-all flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="h-40 rounded-2xl bg-slate-800 border border-slate-700/60 overflow-hidden flex items-center justify-center relative">
+              <i class="fa-solid fa-bolt-lightning text-4xl text-amber-400/40"></i>
+              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] text-amber-400 font-bold">2 小時</span>
+            </div>
+            
+            <div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-400/10 text-amber-400 border border-amber-400/30">Correction & Agility</span>
+              <h3 class="text-xl font-black text-white mt-2">技術與體能精準修正班</h3>
+              <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                結合 AASFP 體適能專項訓練。針對廚房線急停變向、第三板 Drop 與動力鏈核心旋轉進行全方位深度修正。
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-2.5 pt-6 mt-6 border-t border-slate-800">
+            <a href="https://wa.me/85295384552?text=%E4%BD%A0%E5%A5%BD%20James%20Sir%EF%BC%8C%E6%88%91%E6%83%B3%E6%9F%A5%E8%A9%A2%E3%80%8C%E6%8A%80%E8%A1%93%E8%88%87%E9%AB%94%E8%83%BD%E7%B2%BE%E6%BA%96%E4%BF%AE%E6%AD%A3%E7%8F%AD%E3%80%8D%E7%9A%84%E8%A9%B3%E7%B4%B0%E5%85%A7%E5%AE%B9%E3%80%82" 
+               target="_blank" 
+               class="w-full bg-neon-green hover:bg-neon-hover text-slate-950 font-black py-3 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-brands fa-whatsapp text-base"></i>
+              <span>WhatsApp 預約諮詢</span>
+            </a>
+            <a href="https://tally.so/r/D4l0QX?course_type=%E6%8A%80%E8%A1%93%E8%88%87%E9%AB%94%E8%83%BD%E7%B2%BE%E6%BA%96%E4%BF%AE%E6%AD%A3%E7%8F%AD" 
+               target="_blank" 
+               class="w-full bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold py-3 rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-solid fa-file-pen text-neon-green"></i>
+              <span>報名 Enroll Now</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Course 4: 高手班 -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-700 hover:border-purple-400 transition-all flex flex-col justify-between group">
+          <div class="space-y-4">
+            <div class="h-40 rounded-2xl bg-slate-800 border border-slate-700/60 overflow-hidden flex items-center justify-center relative">
+              <i class="fa-solid fa-trophy text-4xl text-purple-400/40"></i>
+              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] text-purple-400 font-bold">2 小時</span>
+            </div>
+            
+            <div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-purple-400/10 text-purple-400 border border-purple-400/30">Expert & DUPR 3.5+</span>
+              <h3 class="text-xl font-black text-white mt-2">高手班</h3>
+              <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                專為 DUPR 3.5+ 賽事選手而設。高壓對戰模擬、死角變線 Dink 戰術、雙人補位默契與心理抗壓特訓。
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-2.5 pt-6 mt-6 border-t border-slate-800">
+            <a href="https://wa.me/85295384552?text=%E4%BD%A0%E5%A5%BD%20James%20Sir%EF%BC%8C%E6%88%91%E6%83%B3%E6%9F%A5%E8%A9%A2%E3%80%8C%E9%AB%98%E6%89%8B%E7%8F%AD%E3%80%8D%E7%9A%84%E8%A9%B3%E7%B4%B0%E5%85%A7%E5%AE%B9%E3%80%82" 
+               target="_blank" 
+               class="w-full bg-neon-green hover:bg-neon-hover text-slate-950 font-black py-3 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-brands fa-whatsapp text-base"></i>
+              <span>WhatsApp 預約諮詢</span>
+            </a>
+            <a href="https://tally.so/r/D4l0QX?course_type=%E9%AB%98%E6%89%8B%E7%8F%AD" 
+               target="_blank" 
+               class="w-full bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold py-3 rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-solid fa-file-pen text-neon-green"></i>
+              <span>報名 Enroll Now</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Course 5: 1對1私教 -->
+        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-slate-700 hover:border-emerald-400 transition-all flex flex-col justify-between group md:col-span-2 lg:col-span-1">
+          <div class="space-y-4">
+            <div class="h-40 rounded-2xl bg-slate-800 border border-slate-700/60 overflow-hidden flex items-center justify-center relative">
+              <i class="fa-solid fa-user-gear text-4xl text-emerald-400/40"></i>
+              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] text-emerald-400 font-bold">2 小時</span>
+            </div>
+            
+            <div>
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-400/10 text-emerald-400 border border-emerald-400/30">1-on-1 Tutorial</span>
+              <h3 class="text-xl font-black text-white mt-2">1對1私教</h3>
+              <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                完全量身訂造的私人特訓。針對個人擊球盲點、動作細節與戰術需求提供 100% 高效率針對性指導。
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-2.5 pt-6 mt-6 border-t border-slate-800">
+            <a href="https://wa.me/85295384552?text=%E4%BD%A0%E5%A5%BD%20James%20Sir%EF%BC%8C%E6%88%91%E6%83%B3%E6%9F%A5%E8%A9%A2%E3%80%8C1%E5%B0%8D1%E7%A7%81%E6%95%99%E3%80%8D%E7%9A%84%E8%A9%B3%E7%B4%B0%E5%85%A7%E5%AE%B9%E3%80%82" 
+               target="_blank" 
+               class="w-full bg-neon-green hover:bg-neon-hover text-slate-950 font-black py-3 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-brands fa-whatsapp text-base"></i>
+              <span>WhatsApp 預約諮詢</span>
+            </a>
+            <a href="https://tally.so/r/D4l0QX?course_type=%E4%B8%80%E5%B0%8D%E4%B8%81%E7%A7%81%E6%95%99" 
+               target="_blank" 
+               class="w-full bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold py-3 rounded-xl border border-slate-700 transition-all flex items-center justify-center gap-2 text-xs">
+              <i class="fa-solid fa-file-pen text-neon-green"></i>
+              <span>報名 Enroll Now</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. HONG KONG VENUES GUIDE -->
+  <!-- ========================================== -->
+  <section id="venues" class="py-20 bg-court-dark relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-accent-cyan">Hong Kong Courts Map</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          香港熱門 <span class="text-accent-cyan">匹克球場地與訓練熱點</span>
+        </h2>
+        <p class="text-slate-400 text-sm">James Sir 覆蓋全港九新界各大公園、康文署場地及社區場地，隨時預約上課！</p>
+      </div>
+
+      <!-- Region Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10">
+        <button class="venue-tab-btn px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-neon-green text-black shadow-neon transition-all" data-region="all">
+          <i class="fa-solid fa-globe mr-1.5"></i>全部地區 (All HK)
+        </button>
+        <button class="venue-tab-btn px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 transition-all" data-region="hk-island">
+          <i class="fa-solid fa-building-flag mr-1.5"></i>港島區
+        </button>
+        <button class="venue-tab-btn px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 transition-all" data-region="kowloon">
+          <i class="fa-solid fa-city mr-1.5"></i>九龍區
+        </button>
+        <button class="venue-tab-btn px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 transition-all" data-region="new-territories">
+          <i class="fa-solid fa-mountain-sun mr-1.5"></i>新界區
+        </button>
+      </div>
+
+      <!-- Venues Grid -->
+      <div id="venuesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- ================= 港島區 ================= -->
+
+        <!-- 1. 維多利亞公園 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="hk-island">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-tree text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-neon-green text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">港島區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>天后站 A2出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">維多利亞公園硬地場</h3>
+            <p class="text-xs text-slate-400">戶外專業壓克力塗層硬地，模擬海外 DUPR 巡迴賽事地表摩擦力。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-sun text-amber-400 mr-1"></i>通風開揚</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E7%B6%AD%E5%A4%9A%E5%88%A9%E4%BA%9C%E5%85%AC%E5%9C%92" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. 中西區海濱長廊 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="hk-island">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-water text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-neon-green text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">港島區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>上環站 E4出口 / 中環站 A出口 / 西營盤站 A2出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">中西區海濱長廊</h3>
+            <p class="text-xs text-slate-400">維港海景旁舒爽訓練，景致一流，極受港島上班族歡迎。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-wind text-accent-cyan mr-1"></i>海風景色</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E4%B8%AD%E8%A5%BF%E5%8D%80%E6%B5%B7%E6%BF%B6%E9%95%B7%E5%BB%廊" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 鰂魚涌公園 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="hk-island">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-tree text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-neon-green text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">港島區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>太古站 E出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">鰂魚涌公園</h3>
+            <p class="text-xs text-slate-400">港島東大型海滨休閒公園，場地設施完善，交通便利。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-location-arrow text-neon-green mr-1"></i>港島東核心</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E9%B5%82%E9%AD%9A%E6%B6%CC%E5%85%AC%E5%9C%92" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 摩利臣山遊樂場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="hk-island">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-building-flag text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-neon-green text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">港島區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>灣仔站 A3出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">摩利臣山遊樂場</h3>
+            <p class="text-xs text-slate-400">位處灣仔市中心，鄰近各主要幹道，港島區學員集合極為方便。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-city text-accent-cyan mr-1"></i>灣仔市中心</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E6%91%90%E5%88%A9%E5%B1%B1%E9%81%8A%E6%A8%82%E5%A0%B4" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= 九龍區 ================= -->
+
+        <!-- 5. 通州街公園 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="kowloon">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-city text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-purple-500 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">九龍區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>南昌站 D1出口 / 深水埗站 C2出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">通州街公園</h3>
+            <p class="text-xs text-slate-400">九龍市中心交通便利之選，場地寬敞，適合各級學員特訓。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-train text-rose-400 mr-1"></i>交通便利</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E9%80%9A%E5%B7%9E%E8%A1%97%E5%85%AC%E5%9C%92" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. 彩虹道遊樂場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="kowloon">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-city text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-purple-500 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">九龍區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>鑽石山站 A2出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">彩虹道遊樂場</h3>
+            <p class="text-xs text-slate-400">熱門康樂場地，設有多用途球場，配套齊全。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-shield-halved text-neon-green mr-1"></i>標準場地</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E5%BD%A9%E8%99%B9%E9%81%93%E9%81%8A%E6%A8%82%E5%A0%B4" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. 歌和老街壁球及乒乓球中心 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="kowloon">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-snowflake text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-purple-500 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">九龍區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>九龍塘站 C2出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">歌和老街壁球及乒乓球中心</h3>
+            <p class="text-xs text-slate-400">九龍心臟地帶，港鐵出口直達，室內冷氣環境，適合下班後訓練。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-snowflake text-accent-cyan mr-1"></i>全空調室內</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E6%AD%8C%E5%92%8C%E8%80%81%E8%A1%97%E9%AB%94%E8%82%B2%E9%A4%A8" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. 坪石遊樂場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="kowloon">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-city text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-purple-500 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">九龍區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>彩虹站 A3出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">坪石遊樂場</h3>
+            <p class="text-xs text-slate-400">交通樞紐旁，場地開揚，球友練習與約戰熱點。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-train text-rose-400 mr-1"></i>港鐵站旁</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E5%9D%AB%E7%9F%B3%E9%81%8A%E6%A8%82%E5%A0%B4" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. 啟德郵輪碼頭公園 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="kowloon">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-ship text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-purple-500 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">九龍區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-location-dot text-rose-400 mr-1"></i>啟德
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">啟德郵輪碼頭公園</h3>
+            <p class="text-xs text-slate-400">巨型空中花園平台，環境開闊，提供獨一無二的戶外開揚體驗。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-panorama text-amber-400 mr-1"></i>空中花園</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E5%95%9F%E5%BE%B7%E9%83%B5%E8%BC%AA%E7%A2%81%E9%A0%AD%E5%85%AC%E5%9C%92" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. 麗閣邨商場天台球場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="kowloon">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-house-chimney-window text-5xl text-neon-green/40"></i>
+            <span class="absolute top-3 left-3 bg-purple-500 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">九龍區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>長沙灣站 A1出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">麗閣邨商場天台球場</h3>
+            <p class="text-xs text-slate-400">市區特訓場地，視野廣闊，旺中帶靜。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-building text-accent-cyan mr-1"></i>社區場地</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E9%BA%97%E9%96%A3%E9%82%A8%E5%95%86%E5%A0%B4%E5%A4%A9%E5%8F%B0" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. 啟業邨商場天台球場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="kowloon">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-house-chimney-window text-5xl text-neon-green/40"></i>
+            <span class="absolute top-3 left-3 bg-purple-500 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">九龍區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>九龍灣站 B出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">啟業邨商場天台球場</h3>
+            <p class="text-xs text-slate-400">九龍灣知名運動熱點，動感氛圍濃厚，場地設備齊全。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-fire text-amber-400 mr-1"></i>熱門運動場</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E5%95%9F%E6%A5%AD%E9%82%A8%E5%95%86%E5%A0%B4%E5%A4%A9%E5%8F%B0" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. 廣東道匹克球場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="kowloon">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-table-tennis-paddle-ball text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-purple-500 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">九龍區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>柯士甸站 F出口 / 佐敦站 C2出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">廣東道匹克球場</h3>
+            <p class="text-xs text-slate-400">九龍核心地帶球場，地點極佳，交通方便。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-star text-amber-400 mr-1"></i>核心地段</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E5%BB%A3%E6%9D%B1%E9%81%93%E5%8C%B9%E5%85%8B%E7%90%83%E5%A0%B4" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= 新界區 ================= -->
+
+        <!-- 13. 源禾遊樂場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="new-territories">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-location-dot text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-amber-400 text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">新界區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>沙田站 A3出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">源禾遊樂場</h3>
+            <p class="text-xs text-slate-400">沙田核心康樂地帶，交通便利，場地寬敞適合進行步法與控球特訓。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-sun text-amber-400 mr-1"></i>戶外硬地</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E6%BA%90%E7%A6%BE%E9%81%8A%E6%A8%82%E5%A0%B4" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. 大窩口道遊樂場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="new-territories">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-location-dot text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-amber-400 text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">新界區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>大窩口站 B出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">大窩口道遊樂場</h3>
+            <p class="text-xs text-slate-400">戶外硬地球場，空間開揚，適合進行步法移位與發力特訓。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-sun text-amber-400 mr-1"></i>戶外硬地</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E5%A4%A7%E7%AA%AA%E5%8F%A3%E9%81%93%E9%81%8A%E6%A8%82%E5%A0%B4" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. 業成街遊樂場 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="new-territories">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-location-dot text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-amber-400 text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">新界區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>葵興站 A出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">業成街遊樂場</h3>
+            <p class="text-xs text-slate-400">設備完善的社區球場，環境舒適，方便新界學員預約練習。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-sun text-amber-400 mr-1"></i>戶外場地</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E6%A5%AD%E6%88%90%E8%A1%97%E9%81%8A%E6%A8%82%E5%A0%B4" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 16. 中葵涌公園 -->
+        <div class="venue-card glass-card rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all" data-region="new-territories">
+          <div class="h-44 bg-slate-800 relative flex items-center justify-center bg-gradient-to-tr from-slate-900 to-court-navy">
+            <i class="fa-solid fa-tree text-5xl text-slate-700"></i>
+            <span class="absolute top-3 left-3 bg-amber-400 text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">新界區</span>
+            <span class="absolute bottom-3 right-3 bg-slate-950/80 text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-800">
+              <i class="fa-solid fa-train text-rose-400 mr-1"></i>葵興站 C出口
+            </span>
+          </div>
+          <div class="p-5 space-y-3">
+            <h3 class="text-lg font-black text-white">中葵涌公園</h3>
+            <p class="text-xs text-slate-400">綠化環繞的優質康樂場地，空氣清新，訓練專注度極高。</p>
+            <div class="flex items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
+              <span><i class="fa-solid fa-leaf text-emerald-400 mr-1"></i>綠化環境</span>
+              <a href="https://tally.so/r/D4l0QX?venue=%E4%B8%AD%E8%91%B5%E6%B6%8C%E5%85%AC%E5%9C%92" target="_blank" class="text-neon-green font-bold hover:underline">選此場地上課 →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. STUDENT TESTIMONIALS & REVIEWS -->
+  <!-- ========================================== -->
+  <section id="testimonials" class="py-20 bg-court-navy border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-amber-400">Student Reviews</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white">
+          學員實戰突破 · <span class="text-amber-400">真實口碑評價</span>
+        </h2>
+        <p class="text-slate-400 text-sm">從零基礎手痛愛好者，到成功在 DUPR 賽事奪牌的真情實測。</p>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div class="grid md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1 text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-neon-green/20 text-neon-green">DUPR 2.5 ➔ 3.25</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
+            「以前打網球留下手臂痛問題，轉打匹克球手肘依然發麻。James 幫我重新調整『動力鏈發力』，用髖關節帶動拉拍，上完 3 堂後手痛消失，第三板 Drop 成功率提升超多！」
+          </p>
+          <div class="flex items-center gap-3 pt-2 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center font-bold text-neon-green">
+              KC
+            </div>
+            <div>
+              <p class="text-sm font-bold text-white">Kevin Chan</p>
+              <p class="text-[11px] text-slate-400">中環上班族 · 上課 8 週</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1 text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-accent-cyan/20 text-accent-cyan">雙人小班學員</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
+            「我和朋友一起報名 1對2 班，James 教練的敏捷步法訓練太厲害了！以前在廚房線亂跑常撞在一起，學完站位默契與 Reset 之後，上週在本地混雙賽事拿到了前四名！」
+          </p>
+          <div class="flex items-center gap-3 pt-2 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center font-bold text-accent-cyan">
+              SL
+            </div>
+            <div>
+              <p class="text-sm font-bold text-white">Sarah & Larry</p>
+              <p class="text-[11px] text-slate-400">雙人進階班學員</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1 text-amber-400 text-xs">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-400/20 text-amber-400">DUPR 3.5+ 賽事組</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
+            「James 擁有 AASFP 高級體適能背景，課前的動態伸展與專項急停防傷測試非常專業。他教的死角 Dink 變線戰術，讓我在比賽關鍵時刻能冷靜打破僵局。」
+          </p>
+          <div class="flex items-center gap-3 pt-2 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center font-bold text-amber-400">
+              MC
+            </div>
+            <div>
+              <p class="text-sm font-bold text-white">Marcus Chow</p>
+              <p class="text-[11px] text-slate-400">DUPR 賽事選手</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 8. DIRECT BOOKING FORM & WHATSAPP MODAL -->
+  <!-- ========================================== -->
+  <section id="contact" class="py-20 bg-court-dark relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-700 shadow-neon/10 relative overflow-hidden">
+        
+        <div class="text-center space-y-3 mb-8">
+          <span class="px-3 py-1 rounded-full bg-neon-green/10 text-neon-green border border-neon-green/30 text-xs font-extrabold uppercase">
+            Get In Touch
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white">
+            預約試堂 ✕ <span class="text-neon-green">私訊教練團隊</span>
+          </h2>
+          <p class="text-slate-400 text-sm">請填寫以下快速表單，系統將會自動帶入專屬 WhatsApp 訊息直接發送給 James Sir！</p>
+        </div>
+
+        <!-- Quick Preset Action Grid -->
+        <div class="grid sm:grid-cols-3 gap-3 mb-8">
+          <button class="quick-preset-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 hover:border-neon-green hover:text-neon-green text-xs font-bold text-slate-300 transition-all text-center"
+                  data-msg="你好James Sir，我想預約 1對1 私人試堂！">
+            ⚡ 預約 1對1 私人試堂
+          </button>
+          <button class="quick-preset-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 hover:border-accent-cyan hover:text-accent-cyan text-xs font-bold text-slate-300 transition-all text-center"
+                  data-msg="你好James Sir，我想諮詢雙人 / 4人精英班課程！">
+            👥 諮詢雙人/4人團班
+          </button>
+          <button class="quick-preset-btn p-3 rounded-xl border border-slate-800 bg-slate-900/80 hover:border-amber-400 hover:text-amber-400 text-xs font-bold text-slate-300 transition-all text-center"
+                  data-msg="你好James Sir，我想私訊「PB」領取免費《預防損傷與高效發力指南》！">
+            📖 領取免費防傷指南
+          </button>
+        </div>
+
+        <!-- Booking Form -->
+        <form id="directBookingForm" class="space-y-4">
+          
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">姓名 / 稱呼</label>
+              <input type="text" id="formName" required placeholder="例如：Alex / 陳先生" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neon-green transition-colors" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">WhatsApp 聯絡電話</label>
+              <input type="tel" id="formPhone" required placeholder="例如：91234567" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neon-green transition-colors" />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">意向課程類型</label>
+              <select id="formClassType" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neon-green transition-colors">
+                <option value="1對1 私人專教">1對1 私人專教 (HK$ 750/hr)</option>
+                <option value="1對2 雙人體驗班">1對2 雙人體驗班 (HK$ 950/hr)</option>
+                <option value="1對4 精英小班">1對4 精英小班 (HK$ 1200/hr)</option>
+                <option value="免費防傷指南諮詢">純粹私訊「PB」領取防傷指南</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">偏好上課地區</label>
+              <select id="formRegion" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neon-green transition-colors">
+                <option value="港島區 (中山公園/維園/香港仔)">港島區 (中山紀念公園 / 維園 / 香港仔)</option>
+                <option value="九龍區 (旺角/九龍灣/石峽尾/啟德)">九龍區 (旺角 / 九龍灣 / 石峽尾 / 啟德)</option>
+                <option value="新界東 (將軍澳/上水粉嶺/沙田)">新界東 (將軍澳 / 上水 / 粉嶺 / 沙田)</option>
+                <option value="新界西 (屯門/元朗/荃葵/青衣)">新界西 (屯門 / 元朗 / 荃葵 / 青衣)</option>
+                <option value="24H 室內匹克球專用館">24H 室內匹克球專用館</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase mb-1">備註 / 目前遇到的痛症或技術瓶頸</label>
+            <textarea id="formNote" rows="3" placeholder="例如：打球時膝蓋會痛、第三板 Drop 容易掛網..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neon-green transition-colors"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-neon-green hover:bg-neon-hover text-slate-950 font-black py-4 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2 text-base">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span>產生專屬訊息並開啟 WhatsApp 傳送</span>
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 9. FOOTER -->
+  <!-- ========================================== -->
+  <footer class="bg-court-navy border-t border-slate-800 py-12 text-slate-400 text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <!-- Brand -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-neon-green flex items-center justify-center text-slate-950 font-black text-lg">
+            <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+          </div>
+          <div>
+            <p class="text-white font-extrabold text-base">James Sir Pickleball HK</p>
+            <p class="text-xs text-slate-400">James Sir ✕ 亞匹聯一級 ✕ AASFP 高級教練</p>
+          </div>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex items-center gap-6 text-xl">
+          <a href="https://wa.me/85295384552" target="_blank" class="hover:text-neon-green transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/james___c.c" class="hover:text-neon-green transition-colors"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@jamespickleballhk" class="hover:text-neon-green transition-colors"><i class="fa-brands fa-youtube"></i></a>
+          <a href="mailto:james.pickleball.hk@gmail.com" class="hover:text-neon-green transition-colors"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+
+      </div>
+
+      <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-xs">
+        <p>© 2026 James Sir Pickleball HK. All rights reserved.</p>
+        <p>認證資歷：Asia Pickleball Federation Level 1 Certified Coach | AASFP Advanced Physical Fitness Specialist</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- 10. JAVASCRIPT LOGIC -->
+  <!-- ========================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // ----------------------------------------------------
+      // 1. Mobile Menu Toggle
+      // ----------------------------------------------------
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIcon = document.getElementById('menuIcon');
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+          mobileMenu.classList.toggle('flex');
+          if (mobileMenu.classList.contains('flex')) {
+            menuIcon.className = 'fa-solid fa-xmark';
+          } else {
+            menuIcon.className = 'fa-solid fa-bars';
+          }
+        });
+      }
+
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+          menuIcon.className = 'fa-solid fa-bars';
+        });
+      });
+
+      // ----------------------------------------------------
+      // 2. DUPR Self-Assessment Quiz Logic
+      // ----------------------------------------------------
+      const quizQuestions = [
+        {
+          id: 1,
+          question: "1. 您目前擊球的連續與控球穩定度如何？",
+          options: [
+            { label: "經常無法掌握擊球點，容易揮空或出界", points: 1 },
+            { label: "能穩定進行中速來回，但急拍時容易掛網", points: 2 },
+            { label: "底線抽球穩定，能控制落點與調節球速", points: 3 },
+            { label: "能在快速拉鋸中隨心控制變線與過網高度", points: 4 }
+          ]
+        },
+        {
+          id: 2,
+          question: "2. 您在處理「第三板 (Third Shot)」時的習慣？",
+          options: [
+            { label: "只會打高遠球發力，經常被網前對手直接扣殺", points: 1 },
+            { label: "知道要打 3rd Shot Drop (軟吊)，但成功率約 30%-50%", points: 2 },
+            { label: "能靈活運用 Third Shot Drive 與 Drop 組合壓制", points: 3 },
+            { label: "無論對方給何種落點，都能精準打出壓低急墜 Drop", points: 4 }
+          ]
+        },
+        {
+          id: 3,
+          question: "3. 您在廚房線 (Kitchen / NVZ) 的戰術掌握度？",
+          options: [
+            { label: "害怕站在廚房線前，習慣退後待在底線", points: 1 },
+            { label: "只會用力打 Dink，經常起高球給對方機會", points: 2 },
+            { label: "能進行 10+ 來回 Dink，耐心等待對手失誤", points: 3 },
+            { label: "掌握死角 Dink、Speedup 突襲與重置 Reset 技術", points: 4 }
+          ]
+        },
+        {
+          id: 4,
+          question: "4. 打波後的運動傷害與身體狀況？",
+          options: [
+            { label: "打完波經常手臂發麻、膝蓋痛或腰酸背痛", points: 1 },
+            { label: "偶爾手肘緊繃，缺乏正確發力機制與熱身", points: 2 },
+            { label: "身體無痛症，希望能提升專項敏捷與爆發變向", points: 3 },
+            { label: "體能良好，想進行高強度 DUPR 賽事模擬特訓", points: 4 }
+          ]
+        }
+      ];
+
+      let currentStep = 0;
+      let totalPoints = 0;
+
+      const quizContainer = document.getElementById('quizContainer');
+      const quizResultBox = document.getElementById('quizResultBox');
+      const quizStepText = document.getElementById('quizStepText');
+      const quizPercentText = document.getElementById('quizPercentText');
+      const quizProgressBar = document.getElementById('quizProgressBar');
+
+      function renderQuizStep(stepIndex) {
+        if (!quizContainer) return;
+        const q = quizQuestions[stepIndex];
+        
+        quizStepText.textContent = `進度：第 ${stepIndex + 1} / ${quizQuestions.length} 題`;
+        const percent = Math.round(((stepIndex + 1) / quizQuestions.length) * 100);
+        quizPercentText.textContent = `${percent}%`;
+        quizProgressBar.style.width = `${percent}%`;
+
+        let html = `
+          <div class="space-y-4 animate-fade-in">
+            <h3 class="text-lg sm:text-xl font-bold text-white">${q.question}</h3>
+            <div class="space-y-3">
+        `;
+
+        q.options.forEach((opt, idx) => {
+          html += `
+            <button class="quiz-opt-btn w-full text-left p-4 rounded-2xl border border-slate-800 bg-slate-900/80 hover:border-neon-green hover:bg-neon-green/10 transition-all font-medium text-xs sm:text-sm text-slate-200 flex items-center justify-between group"
+                    data-points="${opt.points}">
+              <span>${opt.label}</span>
+              <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-neon-green transition-colors"></i>
+            </button>
+          `;
+        });
+
+        html += `</div></div>`;
+        quizContainer.innerHTML = html;
+
+        document.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const pts = parseInt(btn.getAttribute('data-points') || '1');
+            totalPoints += pts;
+            currentStep++;
+
+            if (currentStep < quizQuestions.length) {
+              renderQuizStep(currentStep);
+            } else {
+              showQuizResult();
+            }
+          });
+        });
+      }
+
+      function showQuizResult() {
+        quizContainer.classList.add('hidden');
+        quizResultBox.classList.remove('hidden');
+
+        const scoreElem = document.getElementById('resultDuprScore');
+        const titleElem = document.getElementById('resultLevelTitle');
+        const diagElem = document.getElementById('resultDiagnosisText');
+        const linkElem = document.getElementById('quizBookingLink');
+        const quizTallyLink = document.getElementById('quizTallyLink');
+
+        let scoreText = "";
+        let levelTitle = "";
+        let diagText = "";
+        let tallyRatingText = ""; // Matches your Tally options exactly
+
+        if (totalPoints <= 6) {
+          scoreText = "DUPR 2.0 - 2.5 (新手啟蒙)";
+          levelTitle = "建構正確動力鏈發力 ✕ 基礎控球防傷";
+          diagText = "您處於匹克球啟蒙階段！非常建議從最初就跟隨 James Sir 建立『無痛發力機制』，避免習慣性用手臂死咬造成網球肘。建議參加 1對1 或 雙人基礎班。";
+          tallyRatingText = "DUPR 2.0-2.5 : 你係入門愛好者";
+        } else if (totalPoints <= 10) {
+          scoreText = "DUPR 2.5 - 3.0 (進階提升)";
+          levelTitle = "攻克 3rd Shot Drop ✕ 廚房線 Dink 耐心拉鋸";
+          diagText = "您已有不錯的來回球能力，但常在第三板處理及廚房線高球失誤。建議進行『專項敏捷步法與第三板急墜過網』練習，大幅提高防守重置成功率！";
+          tallyRatingText = "DUPR 2.5-3.0 : 你已經有一定能力，能夠打到幾個來回";
+        } else if (totalPoints <= 13) {
+          scoreText = "DUPR 3.0 - 3.5 (賽事進階)";
+          levelTitle = "戰術變線 Dink ✕ 廚房線 Speedup 與 Reset";
+          diagText = "您已具備優異技術！目前的突破重點在於賽事節奏轉換、落點死角攻擊與心理戰術調控。James Sir 將為您進行高強度賽事模擬戰術特訓！";
+          tallyRatingText = "DUPR 3.0-3.5 : 你已經有基礎戰術知識";
+        } else if (totalPoints <= 15) {
+          scoreText = "DUPR 3.5 - 4.0 (高階玩家)";
+          levelTitle = "高難度動作 ✕ 戰術攻防策略";
+          diagText = "您能夠打到高難度動作，具備良好的技術穩定性。建議進行賽事針對性特訓！";
+          tallyRatingText = "DUPR 3.5-4.0 : 你能夠打到高難度動作，堪稱精英級玩家";
+        } else {
+          scoreText = "DUPR 4.0+ (競技菁英)";
+          levelTitle = "高壓賽事隊戰 ✕ 雙人站位默契與體能爆發";
+          diagText = "恭喜您已具備高級選手實力！建議進行『體能專項爆發敏捷測試與 DUPR 隊戰配對』，優化雙人溝通補位與極限救援。";
+          tallyRatingText = "DUPR 4.0+ : 你能夠穩定打出高難度動作";
+        }
+
+        if (scoreElem) scoreElem.textContent = scoreText;
+        if (titleElem) titleElem.textContent = levelTitle;
+        if (diagElem) diagElem.textContent = diagText;
+
+        // 1. WhatsApp Button Link
+        const whatsappMsg = encodeURIComponent(`你好 James Sir！我完成官網 DUPR 自測，評估結果為【${scoreText}】。我想預約試堂，請幫我安排合適課程！`);
+        if (linkElem) linkElem.href = `https://wa.me/85295384552?text=${whatsappMsg}`;
+
+        // 2. NEW: Tally Button Link with Pre-filled Rating
+        if (quizTallyLink) {
+          const tallyBaseUrl = "https://tally.so/r/D4l0QX";
+          // Pre-fills the "rating" hidden field/question in Tally
+          quizTallyLink.href = `${tallyBaseUrl}?rating=${encodeURIComponent(tallyRatingText)}`;
+        }
+      }
+
+      const resetQuizBtn = document.getElementById('resetQuizBtn');
+      if (resetQuizBtn) {
+        resetQuizBtn.addEventListener('click', () => {
+          currentStep = 0;
+          totalPoints = 0;
+          quizResultBox.classList.add('hidden');
+          quizContainer.classList.remove('hidden');
+          renderQuizStep(0);
+        });
+      }
+
+      renderQuizStep(0);
+
+      // ----------------------------------------------------
+      // 3. Dynamic Interactive Fee & Package Calculator
+      // ----------------------------------------------------
+      const classTypeInputs = document.querySelectorAll('input[name="classType"]');
+      const sessionHoursInputs = document.querySelectorAll('input[name="sessionHours"]');
+      const packagePlanInputs = document.querySelectorAll('input[name="packagePlan"]');
+
+      const summaryClassTypeName = document.getElementById('summaryClassTypeName');
+      const summaryDurationText = document.getElementById('summaryDurationText');
+      const summarySessionsText = document.getElementById('summarySessionsText');
+      const summaryPerPersonPerHour = document.getElementById('summaryPerPersonPerHour');
+      const summaryOriginalPrice = document.getElementById('summaryOriginalPrice');
+      const summaryTotalPrice = document.getElementById('summaryTotalPrice');
+      const calculatorWhatsappBtn = document.getElementById('calculatorWhatsappBtn');
+
+      // Base Rates (HKD per hour)
+      const rates = {
+        private: { hourlyRate: 750, people: 1, name: "1對1 私人專教" },
+        pair: { hourlyRate: 950, people: 2, name: "1對2 雙人班" },
+        group: { hourlyRate: 1200, people: 4, name: "1對4 精英小班" }
+      };
+
+      function updateCalculator() {
+        let selectedClass = "private";
+        classTypeInputs.forEach(i => { if (i.checked) selectedClass = i.value; });
+
+        let hours = 1;
+        sessionHoursInputs.forEach(i => { if (i.checked) hours = parseFloat(i.value); });
+
+        let sessions = 1;
+        packagePlanInputs.forEach(i => { if (i.checked) sessions = parseInt(i.value); });
+
+        const classInfo = rates[selectedClass];
+        const baseHourly = classInfo.hourlyRate;
+        const totalHours = hours * sessions;
+        const rawTotal = baseHourly * totalHours;
+
+        // Discount logic
+        let discount = 1.0;
+        if (sessions === 5) discount = 0.95; // 5% off
+        if (sessions === 10) discount = 0.88; // 12% off
+
+        const finalTotal = Math.round(rawTotal * discount);
+        const perPersonPerHour = Math.round((finalTotal / sessions / hours) / classInfo.people);
+
+        if (summaryClassTypeName) summaryClassTypeName.textContent = classInfo.name;
+        if (summaryDurationText) summaryDurationText.textContent = `${hours} 小時`;
+        if (summarySessionsText) summarySessionsText.textContent = `${sessions} 堂`;
+        if (summaryPerPersonPerHour) summaryPerPersonPerHour.textContent = `HK$ ${perPersonPerHour} /人`;
+
+        if (discount < 1.0) {
+          if (summaryOriginalPrice) {
+            summaryOriginalPrice.textContent = `原價 HK$ ${rawTotal.toLocaleString()}`;
+            summaryOriginalPrice.classList.remove('hidden');
+          }
+        } else {
+          if (summaryOriginalPrice) summaryOriginalPrice.classList.add('hidden');
+        }
+
+        if (summaryTotalPrice) summaryTotalPrice.textContent = `HK$ ${finalTotal.toLocaleString()}`;
+
+        // Update WhatsApp button
+        const msg = encodeURIComponent(`你好 James Sir，我想預約課程方案：\n- 課程：${classInfo.name}\n- 每堂：${hours}小時\n- 套票：${sessions}堂\n- 計算總費用：HK$ ${finalTotal.toLocaleString()} (人均約 $${perPersonPerHour}/hr)\n請幫我安排上課時間地點！`);
+        if (calculatorWhatsappBtn) calculatorWhatsappBtn.href = `https://wa.me/85295384552?text=${msg}`;
+
+        const tallyBaseUrl = "https://tally.so/r/D4l0QX"; // Replace with your Tally link
+        const enrollTallyBtn = document.getElementById("enrollTallyBtn");
+        if (enrollTallyBtn) {
+          const tallyUrl = `${tallyBaseUrl}?course_type=${encodeURIComponent(classInfo.name)}&sessions=${encodeURIComponent(sessions)}&price=${encodeURIComponent(finalTotal)}`;
+          enrollTallyBtn.href = tallyUrl;
+        }
+      }
+
+      classTypeInputs.forEach(i => i.addEventListener('change', updateCalculator));
+      sessionHoursInputs.forEach(i => i.addEventListener('change', updateCalculator));
+      packagePlanInputs.forEach(i => i.addEventListener('change', updateCalculator));
+
+      updateCalculator();
+
+      // ----------------------------------------------------
+      // 4. Venue Tab Filter
+      // ----------------------------------------------------
+      const venueTabBtns = document.querySelectorAll('.venue-tab-btn');
+      const venueCards = document.querySelectorAll('.venue-card');
+
+      venueTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const region = btn.getAttribute('data-region');
+
+          venueTabBtns.forEach(b => {
+            b.className = "venue-tab-btn px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 transition-all";
+          });
+
+          btn.className = "venue-tab-btn px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-neon-green text-black shadow-neon transition-all";
+
+          venueCards.forEach(card => {
+            const cardRegion = card.getAttribute('data-region');
+            if (region === 'all' || cardRegion === region) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // ----------------------------------------------------
+      // 5. Quick Preset & Direct Form Submission
+      // ----------------------------------------------------
+      const quickBtns = document.querySelectorAll('.quick-preset-btn');
+      quickBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const presetMsg = btn.getAttribute('data-msg');
+          window.open(`https://wa.me/85295384552?text=${encodeURIComponent(presetMsg)}`, '_blank');
+        });
+      });
+
+      const directBookingForm = document.getElementById('directBookingForm');
+      if (directBookingForm) {
+        directBookingForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('formName').value;
+          const phone = document.getElementById('formPhone').value;
+          const classType = document.getElementById('formClassType').value;
+          const region = document.getElementById('formRegion').value;
+          const note = document.getElementById('formNote').value;
+
+          const text = `James Sir你好！我想預約匹克球課程：\n- 稱呼：${name}\n- 電話：${phone}\n- 意向班別：${classType}\n- 偏好地區：${region}\n- 備註痛症/目標：${note || '無'}\n請與我聯絡，謝謝！`;
+          window.open(`https://wa.me/85295384552?text=${encodeURIComponent(text)}`, '_blank');
+        });
+      }
+      console.log("🏓 James Sir Pickleball Coaching Web App ready!");
+      // Example JavaScript code inside the website
+      function updateTallyEnrollLink() {
+        const tallyBaseUrl = "https://tally.so/r/D4l0QX"; // Replace with your Tally link
+  
+        const courseType = document.getElementById("courseTypeSelect").value; // e.g., '1-on-1 Private'
+        const sessions = document.getElementById("sessionCount").value;        // e.g., '5'
+        const totalPrice = document.getElementById("calculatedPrice").innerText;// e.g., '3200'
+  
+        // Construct Tally dynamic pre-fill URL
+        const tallyUrl = `${tallyBaseUrl}?course_type=${encodeURIComponent(courseType)}&sessions=${encodeURIComponent(sessions)}&price=${encodeURIComponent(totalPrice)}`;
+  
+        // Set the "Enroll Now" button link
+        document.getElementById("enrollTallyBtn").href = tallyUrl;
+      }
+
+      
+    });
+  </script>
+</body>
+</html>

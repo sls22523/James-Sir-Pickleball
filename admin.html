@@ -156,7 +156,7 @@
 
   <!-- JavaScript 邏輯與 Google Sheet CSV 擷取程式碼 -->
   <script>
-    // ⚠️ 請記得在 Google Sheet 點擊「檔案 > 共用 > 發布到網路 > 選擇 CSV 格式」，並將發布後的連結貼於下方：
+    // 已設定好你的專屬 Google Sheet 發布 CSV 網址
     const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJEpvuMYqokI74iHwjWknZm2cAmQ4kQQrX0EvPh8JwClSMq8zM9uqxaJBp8je7IKsdzHv7_k1rrHN_/pub?gid=133817439&single=true&output=csv";
 
     let calendar;
@@ -216,89 +216,79 @@
       loadSubmissionsFromGoogleSheet();
     });
 
+    // 智慧解析 CSV 函數 (完美處理文字內部的逗號與引號)
+    function parseCSVRow(text) {
+      const lines = text.split(/\r\n|\n/);
+      return lines.map(line => {
+        const result = [];
+        let cell = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          const char = line[i];
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            result.push(cell.trim().replace(/^"|"$/g, ''));
+            cell = '';
+          } else {
+            cell += char;
+          }
+        }
+        result.push(cell.trim().replace(/^"|"$/g, ''));
+        return result;
+      });
+    }
+
     // 🚀 從 Google Sheet 抓取並解析 CSV 資料
     async function loadSubmissionsFromGoogleSheet() {
       const container = document.getElementById("realSubmissionsContainer");
       
-      if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL.includes("YOUR_PUBLISHED")) {
-        container.innerHTML = `
-          <div class="bg-amber-500/10 border border-amber-500/20 text-amber-300 rounded-2xl p-4 text-xs space-y-1">
-            <p class="font-bold">⚠️ 尚未設定 Google Sheet CSV 連結：</p>
-            <p class="text-[11px] text-amber-200/80">請在 Google Sheet 選擇「檔案 ➔ 共用 ➔ 發布到網路 ➔ 選擇 CSV」，並將網址貼到 admin.html 的 GOOGLE_SHEET_CSV_URL 變數中。</p>
-          </div>
-        `;
-        document.getElementById("pendingCountText").innerText = "待處理報名: 0 筆";
-        return;
-      }
-
       try {
-        const response = await fetch(GOOGLE_SHEET_CSV_URL);
-        const csvText = await response.text();
+        // 加上時間戳記防範瀏覽器快取
+        const fetchUrl = GOOGLE_SHEET_CSV_URL + "&_t=" + new Date().getTime();
+        const response = await fetch(fetchUrl);
         
-        // 解析 CSV 每列
-        // 智慧解析 CSV（能完美處理欄位文字內部的逗號與引號）
-        function parseCSV(text) {
-          const lines = text.split(/\r\n|\n/);
-          return lines.map(line => {
-            const result = [];
-            let cell = '';
-            let inQuotes = false;
-            for (let i = 0; i < line.length; i++) {
-              const char = line[i];
-              if (char === '"') {
-                inQuotes = !inQuotes;
-              } else if (char === ',' && !inQuotes) {
-                result.push(cell);
-                cell = '';
-              } else {
-                cell += char;
-              }
-            }
-            result.push(cell);
-            return result;
-          });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
+
+        const csvText = await response.text();
+        const rows = parseCSVRow(csvText);
         container.innerHTML = "";
 
         let pendingCount = 0;
 
-        // 從第 2 行 (Index 1) 開始讀取數據（跳過表頭）
+        // 從第 2 行 (Index 1) 開始讀取
         for (let i = 1; i < rows.length; i++) {
           const cols = rows[i];
-          if (cols.length < 5 || !cols[3]) continue; // 略過空白列
+          if (!cols || cols.length < 4 || !cols[3]) continue; // 略過空白列
 
-          // 🎯 按測試數據欄位精準擷取：
-          const submitTime  = cols[2] ? cols[2].replace(/"/g, '').trim() : "";
-          const name        = cols[3] ? cols[3].replace(/"/g, '').trim() : "未提供姓名";
-          const age         = cols[4] ? cols[4].replace(/"/g, '').trim() : "";
-          const contactName = cols[5] ? cols[5].replace(/"/g, '').trim() : "";
+          const submitTime  = cols[2] || "";
+          const name        = cols[3] || "未提供姓名";
+          const age         = cols[4] || "";
+          const contactName = cols[5] || "";
           
-          // 自動清理電話中的 852 國碼
-          let rawPhone     = cols[6] ? cols[6].replace(/"/g, '').trim() : "";
+          let rawPhone     = cols[6] || "";
           const cleanPhone = rawPhone.replace(/^852/, '').trim(); 
 
-          const language   = cols[7] ? cols[7].replace(/"/g, '').trim() : "";
+          const language   = cols[7] || "";
           
           // Hidden Fields (Index 9, 10)
-          const hiddenCourse = cols[9] ? cols[9].replace(/"/g, '').trim() : "";
-          const hiddenVenue  = cols[10] ? cols[10].replace(/"/g, '').trim() : "";
+          const hiddenCourse = cols[9] || "";
+          const hiddenVenue  = cols[10] || "";
           
           // 表單問題 (Index 11, 12, 13)
-          const experience   = cols[11] ? cols[11].replace(/"/g, '').trim() : "未填寫";
-          const formRegion   = cols[12] ? cols[12].replace(/"/g, '').trim() : "";
-          const timeslot     = cols[13] ? cols[13].replace(/"/g, '').trim() : "";
+          const experience   = cols[11] || "未填寫";
+          const formRegion   = cols[12] || "";
+          const timeslot     = cols[13] || "";
 
-          // 智慧判斷優先採用 Hidden Field
           const finalRegion  = hiddenVenue || formRegion || "未指定地區";
           const finalCourse  = hiddenCourse || "一般課程報名";
 
           pendingCount++;
 
-          // 生成卡片 HTML
           const cardHTML = `
             <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 space-y-3 shadow-md hover:border-slate-700 transition-all">
-              
-              <!-- 頂部：姓名、年齡、電話 -->
               <div class="flex justify-between items-start">
                 <div>
                   <span class="font-black text-sm text-white">${name}</span>
@@ -308,14 +298,12 @@
                 <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-neon-green/10 text-neon-green border border-neon-green/30">${finalCourse}</span>
               </div>
 
-              <!-- 細節：地點與時段 -->
               <div class="grid grid-cols-2 gap-2 text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/80">
                 <div><i class="fa-solid fa-location-dot text-rose-400 mr-1.5"></i><strong>地區：</strong>${finalRegion}</div>
                 <div><i class="fa-solid fa-clock text-accent-cyan mr-1.5"></i><strong>時段：</strong>${timeslot}</div>
                 <div class="col-span-2 text-slate-400"><i class="fa-solid fa-user-tag mr-1.5"></i><strong>聯絡人：</strong>${contactName || name}</div>
               </div>
 
-              <!-- 學員對匹克球的認識程度 (F 欄) -->
               ${experience !== '未填寫' ? `
                 <div class="text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/20 px-3 py-2 rounded-xl flex items-start gap-2">
                   <i class="fa-solid fa-lightbulb text-amber-400 mt-0.5"></i>
@@ -326,7 +314,6 @@
                 </div>
               ` : ''}
 
-              <!-- 按鈕：選取並生成 WhatsApp 訊息 -->
               <div class="pt-1">
                 <button onclick="selectSubmissionForApproval('${name}', '${finalCourse}', '${finalRegion}', '${cleanPhone}', '${experience}')" 
                         class="w-full bg-slate-800 hover:bg-slate-700 text-neon-green text-xs font-bold py-2 rounded-xl border border-slate-700 transition-colors flex items-center justify-center gap-1.5">
@@ -347,7 +334,7 @@
         container.innerHTML = `
           <div class="text-center py-6 text-xs text-rose-400 space-y-1">
             <i class="fa-solid fa-triangle-exclamation text-lg"></i>
-            <p>連線 Google Sheet 失敗，請確認連結權限是否已公開發布。</p>
+            <p>連線 Google Sheet 失敗，請確認該 Google Sheet 已正確發布為 CSV。</p>
           </div>
         `;
       }

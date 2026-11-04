@@ -330,11 +330,12 @@
         document.getElementById("pendingCountText").innerText = `待處理報名: ${pendingCount} 筆`;
 
       } catch (error) {
-        console.error("無法讀取 Google Sheet 數據：", error);
+        console.error("詳細錯誤原因：", error);
         container.innerHTML = `
-          <div class="text-center py-6 text-xs text-rose-400 space-y-1">
-            <i class="fa-solid fa-triangle-exclamation text-lg"></i>
-            <p>連線 Google Sheet 失敗，請確認該 Google Sheet 已正確發布為 CSV。</p>
+          <div class="bg-rose-500/10 border border-rose-500/30 text-rose-300 rounded-2xl p-4 text-xs space-y-2">
+            <p class="font-bold"><i class="fa-solid fa-triangle-exclamation"></i> 連線 Google Sheet 失敗</p>
+            <p class="text-[11px] text-rose-200/80">錯誤原因：${error.message}</p>
+            <p class="text-[10px] text-slate-400">請確認 Google 試算表已正確發布為 CSV，且試算表內至少有一筆測試資料。</p>
           </div>
         `;
       }

@@ -120,7 +120,7 @@
             <h2 class="text-lg font-black text-white flex items-center gap-2">
               <i class="fa-solid fa-calendar-days text-accent-cyan"></i> 導師授課總行事曆
             </h2>
-            <p class="text-xs text-slate-400">💡 提示：**點擊任何一堂課**即可開啟正中央的大型管理控制台[cite: 1]。</p>
+            <p class="text-xs text-slate-400">💡 提示：**點擊任何一堂課**即可開啟正中央的大型管理控制台。</p>
           </div>
           <button onclick="calendar.refetchEvents()" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-800 transition-all">
             <i class="fa-solid fa-rotate-right mr-1"></i>重新整理
@@ -133,7 +133,7 @@
     </div>
   </main>
 
-  <!-- 🎯 正中央的極致大視窗：仿照你的手稿設計[cite: 1] -->
+  <!-- 🎯 正中央的極致大視窗 -->
   <div id="classModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bg-court-navy border-2 border-neon-green/50 rounded-3xl p-8 w-full max-w-2xl shadow-2xl space-y-6 relative animate-in fade-in zoom-in duration-200">
       
@@ -142,13 +142,13 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <!-- 標題區：例如 新手速成班 @ 維多利亞公園 (暫定)[cite: 1] -->
+      <!-- 標題區 -->
       <div class="border-b border-slate-800 pb-4 pr-8">
         <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-neon-green/20 text-neon-green border border-neon-green/40 uppercase tracking-widest">Class Management</span>
         <h2 id="modalClassName" class="text-xl font-black text-white mt-2">載入中...</h2>
       </div>
 
-      <!-- 內容詳情區：完全對應你的草圖[cite: 1] -->
+      <!-- 內容詳情區 -->
       <div class="grid grid-cols-1 gap-3 text-xs bg-slate-950/80 p-5 rounded-2xl border border-slate-800/80 text-slate-200">
         <div class="flex items-start gap-3">
           <span class="text-neon-green font-bold w-24"><i class="fa-solid fa-users mr-1.5"></i>學員名單：</span>
@@ -160,19 +160,19 @@
         </div>
         <div class="flex items-start gap-3">
           <span class="text-neon-green font-bold w-24"><i class="fa-solid fa-clock mr-1.5"></i>課堂時間：</span>
-          <span id="modalTime" class="text-slate-300">15:00 - 17:00 (2小時)[cite: 1]</span>
+          <span id="modalTime" class="text-slate-300">15:00 - 17:00 (2小時)</span>
         </div>
         <div class="flex items-start gap-3">
           <span class="text-neon-green font-bold w-24"><i class="fa-solid fa-location-dot mr-1.5"></i>課堂地點：</span>
-          <span id="modalVenue" class="text-rose-400 font-bold">維多利亞公園 (暫定)[cite: 1]</span>
+          <span id="modalVenue" class="text-rose-400 font-bold">維多利亞公園 (暫定)</span>
         </div>
         <div class="flex items-start gap-3">
           <span class="text-neon-green font-bold w-24"><i class="fa-solid fa-language mr-1.5"></i>語言：</span>
-          <span id="modalLanguage" class="text-slate-300">廣東話 / 普通話[cite: 1]</span>
+          <span id="modalLanguage" class="text-slate-300">廣東話 / 普通話</span>
         </div>
       </div>
 
-      <!-- 互動編輯輸入區 (當點擊批量更改或調堂時展開) -->
+      <!-- 互動編輯輸入區 -->
       <div id="editSection" class="hidden space-y-3 bg-slate-900 p-4 rounded-2xl border border-slate-700">
         <label class="block text-xs font-bold text-accent-cyan" id="editLabel">請輸入修改內容：</label>
         <div class="flex gap-2">
@@ -181,7 +181,7 @@
         </div>
       </div>
 
-      <!-- 🌟 大大方方在正中間的三大主要按鈕 (完全對應你的草圖)[cite: 1] -->
+      <!-- 🌟 大大方方在正中間的三大主要按鈕 -->
       <div class="grid grid-cols-3 gap-4 pt-2">
         <button onclick="handleAction('complete')" class="py-4 rounded-2xl bg-gradient-to-r from-neon-green to-emerald-400 text-slate-950 font-black text-sm shadow-neon hover:opacity-90 transition-all flex flex-col items-center justify-center gap-1">
           <i class="fa-solid fa-circle-check text-lg"></i>
@@ -226,23 +226,18 @@
         editable: true,
         selectable: true,
         
-        // 點擊既有課程時打開正中央大視窗[cite: 1]
         eventClick: function(info) {
           activeModalEvent = info.event;
           
-          // 解析標題與資料
           document.getElementById('modalClassName').innerText = activeModalEvent.title;
           
-          // 從事件擴展屬性中抓取詳細資料（若無則從標題拆解）
           let titleParts = activeModalEvent.title.split('@');
-          let courseAndStudent = titleParts[0] ? titleParts[0].trim() : "課程";
-          let venue = titleParts[1] ? titleParts[1].trim() : "維多利亞公園 (暫定)[cite: 1]";
+          let venue = titleParts[1] ? titleParts[1].trim() : "維多利亞公園 (暫定)";
 
           document.getElementById('modalStudentName').innerText = activeModalEvent.extendedProps.studentName || "學員";
           document.getElementById('modalVenue').innerText = venue;
-          document.getElementById('modalLanguage').innerText = activeModalEvent.extendedProps.language || "廣東話, 普通話[cite: 1]";
+          document.getElementById('modalLanguage').innerText = activeModalEvent.extendedProps.language || "廣東話, 普通話";
           
-          // 隱藏編輯區
           document.getElementById('editSection').classList.add('hidden');
           document.getElementById('classModal').classList.remove('hidden');
         },
@@ -260,7 +255,6 @@
       activeModalEvent = null;
     }
 
-    // 處理三大中央按鈕點擊事件[cite: 1]
     function handleAction(actionType) {
       currentMode = actionType;
       const editSection = document.getElementById('editSection');
@@ -286,7 +280,6 @@
       }
     }
 
-    // 確認送出編輯
     function confirmEditAction() {
       if (!activeModalEvent) return;
       const val = document.getElementById('editInputField').value;
@@ -299,7 +292,6 @@
         alert(`✅ 成功為該學員預約調堂至：${val}！`);
         closeClassModal();
       } else if (currentMode === 'batch') {
-        // 批量更新該學員的所有未來課程
         let studentName = activeModalEvent.extendedProps.studentName;
         let count = 0;
         calendar.getEvents().forEach(ev => {
@@ -313,7 +305,6 @@
       }
     }
 
-    // 智慧解析 CSV 函數
     function parseCSVRow(text) {
       const lines = text.split(/\r\n|\n/);
       return lines.map(line => {
@@ -336,7 +327,6 @@
       });
     }
 
-    // 從 Google Sheet 抓取資料
     async function loadSubmissionsFromGoogleSheet() {
       const container = document.getElementById("realSubmissionsContainer");
       
@@ -367,7 +357,6 @@
           const formRegion   = cols[12] || "";
           const timeslot     = cols[13] || "";
 
-          // 嚴格對應你的 5 大官方班別
           let courseName = "新手速成班";
           const expLower = experience.toLowerCase();
           if (expLower.includes("急救")) {
@@ -381,8 +370,7 @@
           }
           if (hiddenCourse) courseName = hiddenCourse;
 
-          // 自動分派球場（港島或九龍）
-          let defaultVenue = "維多利亞公園 (暫定)";[cite: 1]
+          let defaultVenue = "維多利亞公園 (暫定)";
           if (formRegion.includes("九龍")) {
             defaultVenue = "歌和老街網球中心 (暫定)";
           }
@@ -406,7 +394,6 @@
                 <div><i class="fa-solid fa-clock text-accent-cyan mr-1.5"></i><strong>時段：</strong>${timeslot || '星期日下午'}</div>
               </div>
 
-              <!-- AI 8 週自動排班精靈 -->
               <div class="pt-1">
                 <button onclick="triggerAI8WeekScheduler('${name}', '${courseName}', '${defaultVenue}', '${language}')" 
                         class="w-full bg-gradient-to-r from-neon-green to-accent-cyan text-slate-950 text-xs font-black py-2.5 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2">
@@ -427,7 +414,6 @@
       }
     }
 
-    // 🤖 AI 8 週自動排班精靈
     function triggerAI8WeekScheduler(studentName, courseName, defaultVenue, language) {
       const startDateInput = prompt(`🤖 【AI 8 週排班精靈】\n學員：${studentName}\n對應課程：${courseName}\n自動分派球場：${defaultVenue}\n\n請問這 8 週課程要從哪一天開始？\n(請輸入日期，例如: 2026-11-15 或 2026.11.15)`, "2026-11-15");
       if (!startDateInput) return;
@@ -449,7 +435,7 @@
         let startTime = `${dateStr}T15:00:00`;
         let endTime = `${dateStr}T17:00:00`;
 
-        let eventTitle = `${courseName} @ ${defaultVenue}`;[cite: 1]
+        let eventTitle = `${courseName} (${studentName}) @ ${defaultVenue}`;
 
         calendar.addEvent({
           title: eventTitle,
@@ -469,7 +455,6 @@
       alert(`✅ 成功為 ${studentName} 自動生成連續 8 週（每堂 2 小時）課表！`);
     }
 
-    // 安全登出
     function logoutAdmin() {
       sessionStorage.removeItem("admin_authenticated");
       alert("已安全登出！");

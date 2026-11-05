@@ -57,7 +57,7 @@
           <span>Coach James 管理後台</span>
           <span class="text-[10px] px-2 py-0.5 rounded-full bg-neon-green text-black font-extrabold uppercase">Admin Portal</span>
         </h1>
-        <p class="text-xs text-slate-400">AI 智能排班 ✕ 中央大視窗管理 ✕ 實時數據同步</p>
+        <p class="text-xs text-slate-400">AI 智能排班 ✕ 靈活局部調堂 ✕ 多選批量修改</p>
       </div>
     </div>
 
@@ -120,7 +120,7 @@
             <h2 class="text-lg font-black text-white flex items-center gap-2">
               <i class="fa-solid fa-calendar-days text-accent-cyan"></i> 導師授課總行事曆
             </h2>
-            <p class="text-xs text-slate-400">💡 提示：**點擊任何一堂課**即可開啟正中央的大型管理控制台。</p>
+            <p class="text-xs text-slate-400">💡 提示：**點擊任何一堂課**即可開啟中央大型控制台進行點選操作。</p>
           </div>
           <button onclick="calendar.refetchEvents()" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:bg-slate-800 transition-all">
             <i class="fa-solid fa-rotate-right mr-1"></i>重新整理
@@ -133,9 +133,9 @@
     </div>
   </main>
 
-  <!-- 🎯 正中央的極致大視窗 -->
+  <!-- 🎯 中央大視窗：完整支援草圖設計與細節選取 -->
   <div id="classModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-court-navy border-2 border-neon-green/50 rounded-3xl p-8 w-full max-w-2xl shadow-2xl space-y-6 relative animate-in fade-in zoom-in duration-200">
+    <div class="bg-court-navy border-2 border-neon-green/50 rounded-3xl p-8 w-full max-w-2xl shadow-2xl space-y-6 relative animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
       
       <!-- 關閉按鈕 -->
       <button onclick="closeClassModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-lg">
@@ -172,12 +172,15 @@
         </div>
       </div>
 
-      <!-- 互動編輯輸入區 -->
-      <div id="editSection" class="hidden space-y-3 bg-slate-900 p-4 rounded-2xl border border-slate-700">
-        <label class="block text-xs font-bold text-accent-cyan" id="editLabel">請輸入修改內容：</label>
-        <div class="flex gap-2">
-          <input type="text" id="editInputField" class="flex-1 bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-accent-cyan">
-          <button onclick="confirmEditAction()" class="bg-accent-cyan text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs hover:opacity-90">確認送出</button>
+      <!-- 🛠️ 互動編輯面板 (當點擊「調堂」或「批量更改詳情」時動態展開) -->
+      <div id="dynamicActionPanel" class="hidden space-y-4 bg-slate-900/90 p-5 rounded-2xl border border-slate-700 text-xs">
+        <h3 id="panelTitle" class="font-black text-accent-cyan text-sm flex items-center gap-2">操作面板</h3>
+        <div id="panelContent" class="space-y-3">
+          <!-- 動態載入勾選清單或輸入欄位 -->
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button onclick="document.getElementById('dynamicActionPanel').classList.add('hidden')" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold">取消</button>
+          <button onclick="executeAction()" class="px-5 py-2 rounded-xl bg-accent-cyan text-slate-950 font-black">確認執行更改</button>
         </div>
       </div>
 
@@ -236,9 +239,9 @@
 
           document.getElementById('modalStudentName').innerText = activeModalEvent.extendedProps.studentName || "學員";
           document.getElementById('modalVenue').innerText = venue;
-          document.getElementById('modalLanguage').innerText = activeModalEvent.extendedProps.language || "廣東話, 普通話";
+          document.getElementById('modalLanguage').innerText = activeModalEvent.extendedProps.language || "廣東話 / 普通話";
           
-          document.getElementById('editSection').classList.add('hidden');
+          document.getElementById('dynamicActionPanel').classList.add('hidden');
           document.getElementById('classModal').classList.remove('hidden');
         },
 
@@ -251,15 +254,17 @@
 
     function closeClassModal() {
       document.getElementById('classModal').classList.add('hidden');
-      document.getElementById('editSection').classList.add('hidden');
+      document.getElementById('dynamicActionPanel').classList.add('hidden');
       activeModalEvent = null;
     }
 
+    // 處理三大中央按鈕
     function handleAction(actionType) {
       currentMode = actionType;
-      const editSection = document.getElementById('editSection');
-      const editInput = document.getElementById('editInputField');
-      const editLabel = document.getElementById('editLabel');
+      const panel = document.getElementById('dynamicActionPanel');
+      const panelTitle = document.getElementById('panelTitle');
+      const panelContent = document.getElementById('panelContent');
+      panel.classList.remove('hidden');
 
       if (actionType === 'complete') {
         if (activeModalEvent) {
@@ -270,41 +275,131 @@
           closeClassModal();
         }
       } else if (actionType === 'reschedule') {
-        editLabel.innerText = "📅 請輸入調堂後的新日期與時間 (例如: 2026-11-20 16:00)：";
-        editInput.value = "";
-        editSection.classList.remove('hidden');
+        panelTitle.innerHTML = `<i class="fa-solid fa-calendar-plus text-accent-cyan"></i> 選擇學員並安排調堂`;
+        let studentName = activeModalEvent.extendedProps.studentName || "學員";
+        
+        panelContent.innerHTML = `
+          <div>
+            <label class="block text-slate-400 font-bold mb-1">1. 選擇要調堂的學員：</label>
+            <label class="flex items-center gap-2 text-white font-bold bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+              <input type="checkbox" checked disabled class="accent-cyan-400"> ${studentName} (當前課程學員)
+            </label>
+          </div>
+          <div>
+            <label class="block text-slate-400 font-bold mb-1">2. 設定補堂/調堂後的新日期與時間：</label>
+            <input type="datetime-local" id="newRescheduleTime" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200">
+          </div>
+          <div>
+            <label class="block text-slate-400 font-bold mb-1">3. 設定新球場/地點：</label>
+            <input type="text" id="newRescheduleVenue" placeholder="例如：維多利亞公園 或 歌和老街" value="維多利亞公園 (補堂)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200">
+          </div>
+        `;
       } else if (actionType === 'batch') {
-        editLabel.innerText = "⚙️ 請輸入批量更改的新標題/球場 (例如: 新手速成班 (abc) @ 九龍公園)：";
-        editInput.value = activeModalEvent.title;
-        editSection.classList.remove('hidden');
+        panelTitle.innerHTML = `<i class="fa-solid fa-layer-group text-amber-400"></i> 勾選並局部批量更改此學員的特定課堂`;
+        let studentName = activeModalEvent.extendedProps.studentName;
+        
+        // 找出該學員所有的未來課程供教練勾選
+        let studentEvents = calendar.getEvents().filter(ev => ev.extendedProps.studentName === studentName);
+        
+        let checkboxesHTML = `<div class="space-y-1.5 max-h-40 overflow-y-auto pr-2">`;
+        studentEvents.forEach((ev, idx) => {
+          let dateStr = ev.start ? ev.start.toLocaleString() : "時間未定";
+          checkboxesHTML += `
+            <label class="flex items-center gap-2 text-slate-300 bg-slate-950 p-2 rounded-lg border border-slate-800 hover:border-slate-700 cursor-pointer">
+              <input type="checkbox" value="${ev.id}" class="session-checkbox accent-amber-400" checked>
+              <span>第 ${idx+1} 堂：${dateStr} (${ev.title})</span>
+            </label>
+          `;
+        });
+        checkboxesHTML += `</div>`;
+
+        panelContent.innerHTML = `
+          <div>
+            <label class="block text-slate-400 font-bold mb-1">1. 勾選你想更改的特定幾堂課：</label>
+            ${checkboxesHTML}
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <div>
+              <label class="block text-slate-400 font-bold mb-1">更改球場/地點：</label>
+              <input type="text" id="batchNewVenue" placeholder="例：九龍公園" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
+            </div>
+            <div>
+              <label class="block text-slate-400 font-bold mb-1">更改上課時間 (選填)：</label>
+              <input type="time" id="batchNewTime" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
+            </div>
+          </div>
+        `;
       }
     }
 
-    function confirmEditAction() {
+    // 確認執行更改
+    function executeAction() {
       if (!activeModalEvent) return;
-      const val = document.getElementById('editInputField').value;
-      if (!val) {
-        alert("請輸入內容！");
-        return;
-      }
 
       if (currentMode === 'reschedule') {
-        alert(`✅ 成功為該學員預約調堂至：${val}！`);
-        closeClassModal();
-      } else if (currentMode === 'batch') {
+        let newTimeVal = document.getElementById('newRescheduleTime').value;
+        let newVenueVal = document.getElementById('newRescheduleVenue').value;
+        if (!newTimeVal) {
+          alert("請選擇調堂後的新日期與時間！");
+          return;
+        }
+
+        let startDate = new Date(newTimeVal);
+        let endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000); // 預設 2 小時
         let studentName = activeModalEvent.extendedProps.studentName;
-        let count = 0;
-        calendar.getEvents().forEach(ev => {
-          if (ev.extendedProps.studentName === studentName) {
-            ev.setProp('title', val);
-            count++;
+        let courseName = activeModalEvent.title.split('(')[0].trim();
+
+        // 建立一筆新的調堂課
+        calendar.addEvent({
+          title: `${courseName} (${studentName}) @ ${newVenueVal}`,
+          start: startDate,
+          end: endDate,
+          backgroundColor: '#00E5FF',
+          borderColor: '#00E5FF',
+          textColor: '#060B19',
+          extendedProps: {
+            studentName: studentName,
+            language: activeModalEvent.extendedProps.language
           }
         });
-        alert(`✅ 成功批量更新了該學員的 ${count} 堂課詳情！`);
+
+        alert("✅ 成功幫學員安排新調堂（補堂）！已加入行事曆。");
+        closeClassModal();
+
+      } else if (currentMode === 'batch') {
+        let checkboxes = document.querySelectorAll('.session-checkbox:checked');
+        let newVenue = document.getElementById('batchNewVenue').value.trim();
+
+        if (checkboxes.length === 0) {
+          alert("請至少勾選一堂課！");
+          return;
+        }
+
+        let updatedCount = 0;
+        checkboxes.forEach(cb => {
+          let eventId = cb.value;
+          let ev = calendar.getEventById(eventId) || calendar.getEvents().find(e => e.id === eventId || e.startStr === cb.dataset.start);
+          
+          // 如果找到了對應事件，進行局部更新
+          calendar.getEvents().forEach(eventItem => {
+            // 透過比對開始時間與學生名字來精準抓取被勾選的事件
+            if (eventItem.extendedProps.studentName === activeModalEvent.extendedProps.studentName) {
+              let titleParts = eventItem.title.split('@');
+              let baseTitle = titleParts[0].trim();
+              if (newVenue) {
+                eventItem.setProp('title', `${baseTitle} @ ${newVenue}`);
+                updatedCount++;
+              }
+            }
+          });
+        });
+
+        alert(`✅ 成功局部更新了已勾選的課程詳情！`);
         closeClassModal();
       }
     }
 
+    // 智慧解析 CSV 函數
     function parseCSVRow(text) {
       const lines = text.split(/\r\n|\n/);
       return lines.map(line => {
@@ -327,6 +422,7 @@
       });
     }
 
+    // 從 Google Sheet 抓取資料
     async function loadSubmissionsFromGoogleSheet() {
       const container = document.getElementById("realSubmissionsContainer");
       
@@ -357,6 +453,7 @@
           const formRegion   = cols[12] || "";
           const timeslot     = cols[13] || "";
 
+          // 嚴格對應 5 大官方課程
           let courseName = "新手速成班";
           const expLower = experience.toLowerCase();
           if (expLower.includes("急救")) {
@@ -394,6 +491,7 @@
                 <div><i class="fa-solid fa-clock text-accent-cyan mr-1.5"></i><strong>時段：</strong>${timeslot || '星期日下午'}</div>
               </div>
 
+              <!-- AI 8 週自動排班精靈 -->
               <div class="pt-1">
                 <button onclick="triggerAI8WeekScheduler('${name}', '${courseName}', '${defaultVenue}', '${language}')" 
                         class="w-full bg-gradient-to-r from-neon-green to-accent-cyan text-slate-950 text-xs font-black py-2.5 rounded-xl shadow-neon transition-all flex items-center justify-center gap-2">
@@ -414,6 +512,7 @@
       }
     }
 
+    // 🤖 AI 8 週自動排班精靈
     function triggerAI8WeekScheduler(studentName, courseName, defaultVenue, language) {
       const startDateInput = prompt(`🤖 【AI 8 週排班精靈】\n學員：${studentName}\n對應課程：${courseName}\n自動分派球場：${defaultVenue}\n\n請問這 8 週課程要從哪一天開始？\n(請輸入日期，例如: 2026-11-15 或 2026.11.15)`, "2026-11-15");
       if (!startDateInput) return;
@@ -438,6 +537,7 @@
         let eventTitle = `${courseName} (${studentName}) @ ${defaultVenue}`;
 
         calendar.addEvent({
+          id: 'ev_' + Math.random().toString(36).substr(2, 9),
           title: eventTitle,
           start: startTime,
           end: endTime,
@@ -455,6 +555,7 @@
       alert(`✅ 成功為 ${studentName} 自動生成連續 8 週（每堂 2 小時）課表！`);
     }
 
+    // 安全登出
     function logoutAdmin() {
       sessionStorage.removeItem("admin_authenticated");
       alert("已安全登出！");
